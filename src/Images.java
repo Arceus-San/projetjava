@@ -1,5 +1,7 @@
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class Images {
@@ -41,6 +43,48 @@ public class Images {
 	
 	public void addCouleur(Color c){
 		this.couleur=c;
+	}
+	
+	public BufferedImage toBufferedImage()
+	{
+	    if (this.image instanceof BufferedImage)
+	    {
+	        return (BufferedImage) this.image;
+	    }
+
+	    // Create a buffered image with transparency
+	    BufferedImage bimage = new BufferedImage(this.image.getWidth(null), this.image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+	    // Draw the image on to the buffered image
+	    Graphics2D bGr = bimage.createGraphics();
+	    bGr.drawImage(this.image, 0, 0, null);
+	    bGr.dispose();
+
+	    // Return the buffered image
+	    return bimage;
+	}
+	
+	public Color averageColor() {
+		int x0=0;
+		int y0=0;
+		int w=this.image.getWidth(null);
+		int h=this.image.getHeight(null);
+	    int x1 = x0 + w;
+	    int y1 = y0 + h;
+	    long sumr = 0, sumg = 0, sumb = 0;
+	    for (int x = x0; x < x1; x++) {
+	        for (int y = y0; y < y1; y++) {
+	            Color pixel = new Color((this.toBufferedImage().getRGB(x, y)));
+	            sumr += pixel.getRed();
+	            sumg += pixel.getGreen();
+	            sumb += pixel.getBlue();
+	        }
+	    }
+	    int num = w * h;
+	    int r=(int) (sumr / num);
+	    int g=(int) (sumg / num);
+	    int b=(int) (sumb / num);
+	    return new Color(r,g,b);
 	}
 	
 	public java.lang.Integer calculPixel(){
