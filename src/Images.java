@@ -10,6 +10,7 @@ public class Images {
 	public ArrayList<String> personnes = new ArrayList<String>();
 	public String ville;
 	public ArrayList<String> tags = new ArrayList<String>();
+
 	
 	public Images(Image i){
 		this.image=i;
