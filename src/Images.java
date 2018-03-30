@@ -2,27 +2,31 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Images {
+public class Images implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	public Image image;
 	public Color couleur;
 	public String resolution;
 	public ArrayList<String> personnes = new ArrayList<String>();
 	public String ville;
 	public ArrayList<String> tags = new ArrayList<String>();
-
 	
 	public Images(Image i){
 		this.image=i;
+		this.complete();
 	}
 	
-	public Images(Image i,Color c, String r, String v){
-		this.image=i;
-		this.couleur=c;
-		this.resolution=r;
-		this.ville=v;
+	public void complete(){
+		this.couleur=this.averageColor();
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.image.getWidth(null));
+		sb.append("x");
+		sb.append(this.image.getHeight(null));
+		this.resolution=sb.toString();
 	}
 	
 	public void addPersonne(String p){
@@ -142,5 +146,6 @@ public class Images {
 		}
 		return false;
 	}
+	
 	
 }
