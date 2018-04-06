@@ -26,6 +26,19 @@ public class Modele_Binaire extends Modele{
 			throw new RuntimeException("Lecture des données impossible ou données corrompues");
 		}
 		
+		File fichier2 = new File("dico.dat");
+		try {
+			ois = new ObjectInputStream(new FileInputStream(fichier2));
+			this.dico = (Dico)ois.readObject();
+			ois.close();
+		} catch (FileNotFoundException e) {
+			//Fallback
+			super.chargerDonnées(dir);
+		} catch (IOException | ClassNotFoundException e2) {
+			throw new RuntimeException("Lecture des données impossible ou données corrompues");
+		}
+		
+		
 	}
 
 	public void enregistrement() {
@@ -35,6 +48,17 @@ public class Modele_Binaire extends Modele{
 			FileOutputStream fos = new FileOutputStream(fichier);
 			ObjectOutputStream oos =  new ObjectOutputStream(fos);
 			oos.writeObject(this.images);
+			oos.close();
+			fos.close();
+		} catch (IOException e1) {
+			throw new RuntimeException("Impossible d'écrire les données");
+		}
+		
+		File fichier2 =  new File("dico.dat") ;
+		try {
+			FileOutputStream fos = new FileOutputStream(fichier2);
+			ObjectOutputStream oos =  new ObjectOutputStream(fos);
+			oos.writeObject(this.dico);
 			oos.close();
 			fos.close();
 		} catch (IOException e1) {
