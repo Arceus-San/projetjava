@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DicoPersonnes extends HashMap<String , ArrayList<Images>> {
+public class Dico extends HashMap<String , ArrayList<Images>> {
 	
 	
-	public DicoPersonnes(){
+	public Dico(){
 		super();
 		
 	}
