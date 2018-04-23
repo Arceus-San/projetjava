@@ -7,15 +7,15 @@ import java.util.Observable;
 import javax.imageio.ImageIO;
 
 public abstract class Modele extends Observable{
-	
+
 	public ArrayList<Images> images;
-	
-	int indexImageSelectionnÃ©e=0;
-	
+
+	int indexImageSelectionnée=0;
+
 	public Modele() {}
-	
-	public void chargerDonnÃ©es(String dir) {
-		
+
+	public void chargerDonnées(String dir) {
+
 		File repImages = new File(dir);
 		File[] imagesListe = repImages.listFiles();
 		this.images = new ArrayList<>();
@@ -23,16 +23,16 @@ public abstract class Modele extends Observable{
 			try {
 				Image img = ImageIO.read(file);
 				this.images.add(new Images(img));
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-	}	
-	
-	
-	
+	}
+
+
+
 	public abstract void enregistrement();
-	
+
 
 }

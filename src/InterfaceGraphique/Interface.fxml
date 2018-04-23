@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080" prefWidth="1920" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceGraphique.controller">
+   <children>
+      <SplitPane dividerPositions="0.11522419186652763" layoutX="-1.0" layoutY="155.0" prefHeight="926.0" prefWidth="1920.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ChoiceBox fx:id="chb1" layoutX="42.0" layoutY="299.0" prefWidth="150.0" AnchorPane.topAnchor="299.0" />
+                  <Button fx:id="b1" layoutX="22.0" layoutY="416.0" mnemonicParsing="false" onAction="#buttonaction" prefHeight="37.0" prefWidth="173.0" text="Nouvelle Recherche" />
+                  <CheckBox fx:id="cb1" layoutX="62.0" layoutY="107.0" mnemonicParsing="false" onAction="#selecresolution" text="4K" />
+                  <CheckBox fx:id="cb2" layoutX="62.0" layoutY="140.0" mnemonicParsing="false" onAction="#selecresolution" text="1920x1080" />
+                  <CheckBox fx:id="cb3" layoutX="62.0" layoutY="172.0" mnemonicParsing="false" onAction="#selecresolution" text="1280x720" />
+                  <CheckBox fx:id="cb4" layoutX="62.0" layoutY="201.0" mnemonicParsing="false" onAction="#selecresolution" text="Autres" />
+                  <Label fx:id="label1" layoutX="33.0" layoutY="71.0" text="Résolution" />
+                  <Label fx:id="label2" layoutX="33.0" layoutY="30.0" text="Filtres" />
+                  <ChoiceBox fx:id="chb2" layoutX="42.0" layoutY="349.0" prefHeight="31.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ScrollBar layoutX="1670.0" orientation="VERTICAL" prefHeight="876.0" prefWidth="18.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <TabPane prefHeight="37.0" prefWidth="1878.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab fx:id="tab1" text="Galerie">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+      <TextField fx:id="brech" layoutX="277.0" layoutY="77.0" onAction="#barrerecherche" prefHeight="37.0" prefWidth="1534.0" />
+      <Button fx:id="b2" layoutX="1878.0" mnemonicParsing="false" onAction="#ajoutonglet" prefHeight="37.0" prefWidth="41.0" text="+" />
+      <Rectangle fx:id="logo" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="96.0" layoutX="14.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="204.0" />
+   </children>
+</Pane>

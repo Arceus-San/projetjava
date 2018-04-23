@@ -8,11 +8,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Modele_Binaire extends Modele{
-	
+
 	public Modele_Binaire(){}
-	
-	public void chargerDonnées(String dir) {
-		
+
+	public void chargerDonn�es(String dir) {
+
 		File fichier =  new File("images.dat") ;
 		ObjectInputStream ois;
 		try {
@@ -21,15 +21,15 @@ public class Modele_Binaire extends Modele{
 			ois.close();
 		} catch (FileNotFoundException e) {
 			//Fallback
-			super.chargerDonnées(dir);
+			super.chargerDonn�es(dir);
 		} catch (IOException | ClassNotFoundException e2) {
 			throw new RuntimeException("Lecture des données impossible ou données corrompues");
 		}
-		
+
 	}
 
 	public void enregistrement() {
-		
+
 		File fichier =  new File("images.dat") ;
 		try {
 			FileOutputStream fos = new FileOutputStream(fichier);
@@ -40,7 +40,7 @@ public class Modele_Binaire extends Modele{
 		} catch (IOException e1) {
 			throw new RuntimeException("Impossible d'écrire les données");
 		}
-		
+
 	}
 
 }
