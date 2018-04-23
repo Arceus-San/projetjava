@@ -69,6 +69,7 @@ public class Images implements Serializable{
 	}
 
 	public Color averageColor() {
+		Color[] couleurs = {Color.BLACK,Color.BLUE,Color.CYAN,Color.GRAY,Color.GREEN,Color.MAGENTA,Color.ORANGE,Color.PINK,Color.RED,Color.WHITE,Color.YELLOW};
 		int x0=0;
 		int y0=0;
 		int w=this.image.getWidth(null);
@@ -88,7 +89,25 @@ public class Images implements Serializable{
 	    int r=(int) (sumr / num);
 	    int g=(int) (sumg / num);
 	    int b=(int) (sumb / num);
-	    return new Color(r,g,b);
+	    Color base = new Color(r,g,b);
+	    
+	    /*int rgbDistance = 765;
+	    Color coul = null;
+	    for(int i=0;i<couleurs.length;i++){
+	    	Color myColor = couleurs[i];
+	    	int rgbDistance2 = Math.abs(myColor.getRed() - base.getRed()) + 
+	                Math.abs(myColor.getGreen() - base.getGreen()) +
+	                Math.abs(myColor.getBlue() - base.getBlue());
+	    	System.out.println("Distance 1 : "+rgbDistance);
+	    	System.out.println("Distance 2 : "+rgbDistance2);
+	    	if(rgbDistance2 < rgbDistance){
+	    		rgbDistance=rgbDistance2;
+	    		coul=couleurs[i];
+	    	}
+	    }*/
+	    
+	    return base;
+	    
 	}
 
 	public java.lang.Integer calculPixel(){

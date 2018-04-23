@@ -10,7 +10,7 @@ public class Testfonctions {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
-		    File pathToFile = new File("Photos/lucane.jpg");
+		    File pathToFile = new File("Photos/espace.jpg");
 		    Image img = ImageIO.read(pathToFile);
 		    Images image = new Images(img);
 		    image.addPersonne("Maxime Gresse");
