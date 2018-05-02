@@ -22,7 +22,7 @@ public abstract class Modele extends Observable{
 		File[] imagesListe = repImages.listFiles();
 		this.images = new ArrayList<>();
 		this.dico = new Dico();
-		System.out.println("Charger donnÃ©es Modele");
+		System.out.println("Charger données Modele");
 		for (File file : imagesListe) {
 			if(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".jpeg")){
 			try {

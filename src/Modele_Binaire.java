@@ -45,7 +45,7 @@ public class Modele_Binaire extends Modele{
 
 	public void enregistrement() {
 
-		System.out.println("Enregistrer donnÃ©es Modele");
+		System.out.println("Enregistrer données Modele");
 
 		File fichier =  new File("images.dat") ;
 		File fichier2 =  new File("dico.dat") ;
@@ -61,7 +61,7 @@ public class Modele_Binaire extends Modele{
 			oos2.close();
 			fos2.close();
 		} catch (IOException e1) {
-			//throw new RuntimeException("Impossible d'Ã©crire les donnÃ©es");
+			//throw new RuntimeException("Impossible d'écrire les données");
 			e1.printStackTrace();
 		}
 
