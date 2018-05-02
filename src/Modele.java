@@ -8,16 +8,16 @@ import java.util.Observable;
 import javax.imageio.ImageIO;
 
 public abstract class Modele extends Observable{
-	
+
 	public ArrayList<Images> images;
 	public Dico dico;
-	
-	int indexImageSelectionnÃ©e=0;
-	
+
+	int indexImageSelectionnée=0;
+
 	public Modele() {}
-	
-	public void chargerDonnÃ©es(String dir) {
-		
+
+	public void chargerDonnées(String dir) {
+
 		File repImages = new File(dir);
 		File[] imagesListe = repImages.listFiles();
 		this.images = new ArrayList<>();
@@ -29,8 +29,8 @@ public abstract class Modele extends Observable{
 				Image img = ImageIO.read(file);
 				Images img_att=new Images(img);
 				this.images.add(img_att);
-				
-				
+
+
 				String nom = file.getName();
 				int index=0;
 				while(nom.charAt(index)!='.'){
@@ -41,23 +41,23 @@ public abstract class Modele extends Observable{
 				if (!this.dico.containsKey(nom2))
 					this.dico.put(nom2.toString(), new ArrayList<Images>());
 				this.dico.get(nom2).add(img_att);
-				
+
 				img_att.complete();
-				
+
 				String dimension = img_att.resolution;
 				if (!this.dico.containsKey(dimension))
 					this.dico.put(dimension, new ArrayList<Images>());
 				this.dico.get(dimension).add(img_att);
-				
-				
+
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			}
 		}
-	}	
-	
-	
+	}
+
+
 	public Images recupimg(String s) throws ExceptionImgNotExist{
 		for(int i=0;i<this.images.size();i++){
 			if(this.images.get(i).nomimg.contains(s)){
@@ -65,9 +65,9 @@ public abstract class Modele extends Observable{
 			}
 		}throw new ExceptionImgNotExist();
 	}
-	
-	
+
+
 	public abstract void enregistrement();
-	
+
 
 }
