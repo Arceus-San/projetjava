@@ -12,17 +12,17 @@ public abstract class Modele extends Observable{
 	public ArrayList<Images> images;
 	public Dico dico;
 
-	int indexImageSelectionnée=0;
+	int indexImageSelectionnÃ©e=0;
 
 	public Modele() {}
 
-	public void chargerDonnées(String dir) {
+	public void chargerDonnÃ©es(String dir) {
 
 		File repImages = new File(dir);
 		File[] imagesListe = repImages.listFiles();
 		this.images = new ArrayList<>();
 		this.dico = new Dico();
-		System.out.println("Charger données Modele");
+		System.out.println("Charger donnï¿½es Modele");
 		for (File file : imagesListe) {
 			if(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".jpeg")){
 			try {
@@ -69,5 +69,18 @@ public abstract class Modele extends Observable{
 
 	public abstract void enregistrement();
 
+	public static void main(String[] args) {
+		Modele_Binaire modele = new Modele_Binaire();
+		modele.chargerDonnÃ©es("Photos/");
+		System.out.println(modele.dico.get("ratatouille"));
+
+		/*Images rata = modele.recupimg("rata");
+		rata.addTag("paris", modele.dico);*/
+
+		System.out.println(modele.dico.get("paris"));
+		System.out.println(modele.dico.get("1920x1080"));
+		System.out.println(modele.dico.get("1280x720"));
+		modele.enregistrement();
+	}
 
 }
