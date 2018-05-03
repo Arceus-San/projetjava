@@ -1,9 +1,14 @@
 package InterfaceGraphique;
 
+import Patafix.Images;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import com.sun.javafx.geom.Rectangle;
 
@@ -25,7 +30,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import javafx.util.Callback;
 
-public class Controller extends AnchorPane{
+public class Controller extends AnchorPane implements Observer{
 
 	@FXML
 	Button b1;
@@ -45,21 +50,43 @@ public class Controller extends AnchorPane{
 	ImageView imgview1, imgview2, imgview3, imgview4, imgview5, imgview6, imgview7, imgview8, imgview9, imgview10, imgview11, imgview12, imgview13, imgview14, imgview15;
 
 	Object rech[] = {"",new ArrayList<String>()};
-	
+
+
+	ArrayList<ImageView> imageview;
+	ArrayList<Images> images;
+
+
 	public void initialize(){
 
 		ObservableList<String> couleurs = FXCollections.observableArrayList("...","Noir","Bleu","Cyan","Gris", "Vert", "Magenta","Orange","Rose","Rouge","Blanc","Jaune");/*Ajout des elements dans la liste de choix des couleurs*/
 		chb1.setItems(couleurs);
-		chb1.getSelectionModel().selectFirst();/*Selectionne par dï¿½faut le premier element de la liste*/
+		chb1.getSelectionModel().selectFirst();/*Selectionne par défaut le premier element de la liste*/
 
 		ObservableList<String> villes = FXCollections.observableArrayList("...","Paris","New-York", "Madrid","Berlin","Rome","Chicago","Sydney");/*Ajout des elements dans la liste de choix des villes(ï¿½ modifier, liste test)*/
 		chb2.setItems(villes);
-		chb2.getSelectionModel().selectFirst();/*Selectionne par dï¿½faut le premier element de la liste*/
+
+		chb2.getSelectionModel().selectFirst();/*Selectionne par défaut le premier element de la liste*/
+
+		chb2.getSelectionModel().selectFirst();/*Selectionne par défaut le premier element de la liste*/
+
+		//this.genereimages();
+
 	}
-	public void selectedimage(ActionEvent event){/*Crï¿½er la fonction qui ouvre une nouvelle image dans un nouvel onglet*/
+	public void selectedimage(ActionEvent event){/*Créer la fonction qui ouvre une nouvelle image dans un nouvel onglet*/
 		if(vue.isSelected()){
 		}
 	}
+
+	/*public void genereimages(){
+        final URL imageURL = getClass().getResource(System.getProperty("user.home")+"/Bureau/JAVA/projetjava/Photos/louvre.jpg");
+        final Image image = new Image(imageURL.toExternalForm());
+        final ImageView imageView = new ImageView(image);
+
+		File file = new File("Photos/louvres.jpg");
+		System.out.println(System.getProperty("user.home"));
+
+		System.out.println(file.exists());
+    }*/
 
 	public void buttonaction(ActionEvent event){		/*Fonction qui agit sur le bouton ajouter filtres, on recupere les filtres choisis*/
 		ArrayList<String> filtres = new ArrayList<>();
@@ -91,9 +118,15 @@ public class Controller extends AnchorPane{
 		//}
 	}
 
+	/*public void toImageView(){
+		for(Images image : this.images){
+			this.imageview.add(new ImageView().setImage(image)s);
+		}
 
-	public void barrerecherche(ActionEvent event){ /*Fonction qui permet de recuperer les valeurs rentrï¿½s dans la barre de recherche*/
-		//System.out.print(brech.getText());/*probleme rï¿½ncontrï¿½, les elements restent en memorie a chaque recherche effectuï¿½*/
+	}*/
+
+	public void barrerecherche(ActionEvent event){ /*Fonction qui permet de recuperer les valeurs rentrés dans la barre de recherche*/
+		//System.out.print(brech.getText());/*probleme réncontré, les elements restent en memorie a chaque recherche effectué*/
 		if(brech.getText().isEmpty()){
 			System.out.println("Recherche vide");
 		}
@@ -102,6 +135,10 @@ public class Controller extends AnchorPane{
 			System.out.println("Recherche : "+this.rech[0]);
 			System.out.println("Filtres : "+this.rech[1]);
 		}
+	}
+	@Override
+	public void update(Observable obs, Object obj) {
+		//this.images = ((ArrayList<Images> obj);
 	}
 
 }

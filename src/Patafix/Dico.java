@@ -1,3 +1,4 @@
+package Patafix;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,18 +13,18 @@ public class Dico extends HashMap<String , ArrayList<Images>> implements Seriali
 	}
 
 	public ArrayList<Images> recherche(String s){
-		Set<String> clÃ©s = this.keySet();
+		Set<String> clés = this.keySet();
 
 		//Version "ou"
 		if(s.contains(" ")){
 			String[] param = s.split("\\s+");
 			ArrayList<Images> resultat = new ArrayList<Images>();
-			String[] clÃ©tab = clÃ©s.toArray(new String[clÃ©s.size()]);
+			String[] clétab = clés.toArray(new String[clés.size()]);
 			for(int i=0;i<param.length;i++){
-				if(clÃ©s.contains(param[i])){
-					for(int j=0;j<clÃ©tab.length;j++){
-						if(param[i].equals(clÃ©tab[j])){
-							ArrayList<Images> temp = this.get(clÃ©tab[j]);
+				if(clés.contains(param[i])){
+					for(int j=0;j<clétab.length;j++){
+						if(param[i].equals(clétab[j])){
+							ArrayList<Images> temp = this.get(clétab[j]);
 							for(int k=0;k<temp.size();k++){
 								if(!resultat.contains(temp.get(k))){
 									resultat.add(temp.get(k));
@@ -72,7 +73,7 @@ public class Dico extends HashMap<String , ArrayList<Images>> implements Seriali
 		}*/
 
 		else{
-			if(clÃ©s.contains(s)){
+			if(clés.contains(s)){
 				return this.get(s);
 			}
 			else{

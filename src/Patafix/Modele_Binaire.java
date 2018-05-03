@@ -1,3 +1,4 @@
+package Patafix;
 import java.io.File;
 
 import java.io.FileInputStream;
@@ -15,7 +16,7 @@ public class Modele_Binaire extends Modele{
 
 	public Modele_Binaire(){}
 
-	public void chargerDonn√©es(String dir) {
+	public void chargerDonnÈes(String dir) {
 
 		System.out.println("Charger donn√©es Modele");
 
@@ -35,9 +36,9 @@ public class Modele_Binaire extends Modele{
 		} catch (FileNotFoundException e) {
 			//Fallback
 			System.out.println("Les fichiers images et dico n'existent pas");
-			super.chargerDonn√©es(dir);
+			super.chargerDonnÈes(dir);
 		} catch (IOException | ClassNotFoundException e2) {
-			//throw new RuntimeException("Lecture des donn√©es impossible ou donn√©es corrompues");
+			//throw new RuntimeException("Lecture des donnÈes impossible ou donnÈes corrompues");
 			e2.printStackTrace();
 		}
 
@@ -61,7 +62,7 @@ public class Modele_Binaire extends Modele{
 			oos2.close();
 			fos2.close();
 		} catch (IOException e1) {
-			//throw new RuntimeException("Impossible d'√©crire les donn√©es");
+			//throw new RuntimeException("Impossible d'Ècrire les donnÈes");
 			e1.printStackTrace();
 		}
 

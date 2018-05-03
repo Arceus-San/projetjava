@@ -1,3 +1,4 @@
+package Patafix;
 
 import java.awt.Image;
 import java.io.File;
@@ -12,17 +13,17 @@ public abstract class Modele extends Observable{
 	public ArrayList<Images> images;
 	public Dico dico;
 
-	int indexImageSelectionnÃ©e=0;
+	int indexImageSelectionnée=0;
 
 	public Modele() {}
 
-	public void chargerDonnÃ©es(String dir) {
+	public void chargerDonnées(String dir) {
 
 		File repImages = new File(dir);
 		File[] imagesListe = repImages.listFiles();
 		this.images = new ArrayList<>();
 		this.dico = new Dico();
-		System.out.println("Charger donnï¿½es Modele");
+		System.out.println("Charger données Modele");
 		for (File file : imagesListe) {
 			if(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".jpeg")){
 			try {
@@ -55,6 +56,8 @@ public abstract class Modele extends Observable{
 			}
 			}
 		}
+
+		this.notifyObservers(this.images);
 	}
 
 
@@ -71,7 +74,7 @@ public abstract class Modele extends Observable{
 
 	public static void main(String[] args) {
 		Modele_Binaire modele = new Modele_Binaire();
-		modele.chargerDonnÃ©es("Photos/");
+		modele.chargerDonnées("Photos/");
 		System.out.println(modele.dico.get("ratatouille"));
 
 		/*Images rata = modele.recupimg("rata");

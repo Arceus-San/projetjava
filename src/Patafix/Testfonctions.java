@@ -1,9 +1,10 @@
+package Patafix;
 public class Testfonctions {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Modele_Binaire modele = new Modele_Binaire();
-		modele.chargerDonnÃ©es("Photos/");
+		modele.chargerDonnées("Photos/");
 		System.out.println(modele.dico.get("ratatouille"));
 
 		/*Images rata = modele.recupimg("rata");

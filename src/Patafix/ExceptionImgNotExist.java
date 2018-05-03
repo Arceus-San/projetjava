@@ -1,3 +1,4 @@
+package Patafix;
 
 public class ExceptionImgNotExist extends RuntimeException {
 
