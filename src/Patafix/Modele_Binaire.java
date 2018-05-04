@@ -16,7 +16,7 @@ public class Modele_Binaire extends Modele{
 
 	public Modele_Binaire(){}
 
-	public void chargerDonnées(String dir) {
+	public void chargerDonnÃ©es(String dir) {
 
 		System.out.println("Charger donnÃ©es Modele");
 
@@ -36,9 +36,9 @@ public class Modele_Binaire extends Modele{
 		} catch (FileNotFoundException e) {
 			//Fallback
 			System.out.println("Les fichiers images et dico n'existent pas");
-			super.chargerDonnées(dir);
+			super.chargerDonnÃ©es(dir);
 		} catch (IOException | ClassNotFoundException e2) {
-			//throw new RuntimeException("Lecture des données impossible ou données corrompues");
+			//throw new RuntimeException("Lecture des donnï¿½es impossible ou donnï¿½es corrompues");
 			e2.printStackTrace();
 		}
 
@@ -62,7 +62,7 @@ public class Modele_Binaire extends Modele{
 			oos2.close();
 			fos2.close();
 		} catch (IOException e1) {
-			//throw new RuntimeException("Impossible d'écrire les données");
+			//throw new RuntimeException("Impossible d'ï¿½crire les donnï¿½es");
 			e1.printStackTrace();
 		}
 
