@@ -55,6 +55,7 @@ public class Controller extends AnchorPane implements Observer{
 	ImageView imgview1, imgview2, imgview3, imgview4, imgview5, imgview6, imgview7, imgview8, imgview9, imgview10, imgview11, imgview12, imgview13, imgview14, imgview15;
 
 	Object rech[] = {"",new ArrayList<String>()};
+
 	ImageView[] im = {imgview1, imgview2, imgview3, imgview4, imgview5, imgview6, imgview7, imgview8, imgview9, imgview10, imgview11, imgview12, imgview13, imgview14, imgview15};
 
 
@@ -63,6 +64,7 @@ public class Controller extends AnchorPane implements Observer{
 
 
 	public void initialize() throws IOException{
+
 
 		ObservableList<String> couleurs = FXCollections.observableArrayList("...","Noir","Bleu","Cyan","Gris", "Vert", "Magenta","Orange","Rose","Rouge","Blanc","Jaune");/*Ajout des elements dans la liste de choix des couleurs*/
 		chb1.setItems(couleurs);
@@ -174,8 +176,8 @@ public class Controller extends AnchorPane implements Observer{
 
 	}
 
-	public void barrerecherche(ActionEvent event){ /*Fonction qui permet de recuperer les valeurs rentrés dans la barre de recherche*/
-		//System.out.print(brech.getText());/*probleme réncontré, les elements restent en memorie a chaque recherche effectué*/
+	public void barrerecherche(ActionEvent event){ /*Fonction qui permet de recuperer les valeurs rentrï¿½s dans la barre de recherche*/
+		//System.out.print(brech.getText());
 		if(brech.getText().isEmpty()){
 			System.out.println("Recherche vide");
 		}
@@ -189,6 +191,7 @@ public class Controller extends AnchorPane implements Observer{
 	public void update(Observable obs, Object obj) {
 		ArrayList img= new ArrayList();
 		img.add(this.images);
+
 	}
 
 }
