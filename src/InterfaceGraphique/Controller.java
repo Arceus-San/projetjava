@@ -101,35 +101,35 @@ public class Controller extends AnchorPane implements Observer{
 	}
 
 	public void genereimages(){
-        Image image = new Image("file:Photos/larry.jpg");
+        Image image = new Image("file:Photos/albi.jpg");
         imgview1.setImage(image);
-        Image image1 = new Image("file:Photos/larry.jpg");
+        Image image1 = new Image("file:Photos/castres.jpg");
         imgview2.setImage(image1);
-        Image image2 = new Image("file:Photos/larry.jpg");
+        Image image2 = new Image("file:Photos/cathedrale.jpg");
         imgview3.setImage(image2);
-        Image image3 = new Image("file:Photos/larry.jpg");
+        Image image3 = new Image("file:Photos/kyoto.jpg");
         imgview4.setImage(image3);
-        Image image4 = new Image("file:Photos/larry.jpg");
+        Image image4 = new Image("file:Photos/londres.jpg");
         imgview5.setImage(image4);
-        Image image5 = new Image("file:Photos/larry.jpg");
+        Image image5 = new Image("file:Photos/los-angeles.jpg");
         imgview6.setImage(image5);
-        Image image6 = new Image("file:Photos/larry.jpg");
+        Image image6 = new Image("file:Photos/louvre.jpg");
         imgview7.setImage(image6);
-        Image image7 = new Image("file:Photos/larry.jpg");
+        Image image7 = new Image("file:Photos/marseille.jpg");
         imgview8.setImage(image7);
-        Image image8 = new Image("file:Photos/larry.jpg");
+        Image image8 = new Image("file:Photos/moscou.jpg");
         imgview9.setImage(image8);
-        Image image9 = new Image("file:Photos/larry.jpg");
+        Image image9 = new Image("file:Photos/new-york.jpg");
         imgview10.setImage(image9);
-        Image image10 = new Image("file:Photos/larry.jpg");
+        Image image10 = new Image("file:Photos/ratatouille.jpg");
         imgview11.setImage(image10);
-        Image image11 = new Image("file:Photos/larry.jpg");
+        Image image11 = new Image("file:Photos/stade.jpg");
         imgview12.setImage(image11);
-        Image image12 = new Image("file:Photos/larry.jpg");
+        Image image12 = new Image("file:Photos/theatre.jpg");
         imgview13.setImage(image12);
-        Image image13 = new Image("file:Photos/larry.jpg");
+        Image image13 = new Image("file:Photos/tokyo.jpg");
         imgview14.setImage(image13);
-        Image image14 = new Image("file:Photos/larry.jpg");
+        Image image14 = new Image("file:Photos/tour.jpg");
         imgview15.setImage(image14);
 
 		//File file = new File("C:/Users/Mofid Krim/Desktop/L2/Java_Project/projetjava/Photos/louvre.jpg");
