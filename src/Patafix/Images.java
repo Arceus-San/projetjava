@@ -1,8 +1,7 @@
 package Patafix;
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -29,22 +28,15 @@ public class Images implements Serializable{
 
 	public Image recupimg(){
 		String nom = this.nomimg+".jpg";
-		File fichier = new File("Photos/"+nom);
-		try {
-			Image img = ImageIO.read(fichier);
-			return img;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		Image img = new Image("Photos/"+nom);
+		return img;
 	}
 
 	public void complete(){
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.recupimg().getWidth(null));
+		sb.append(this.recupimg().getWidth());
 		sb.append("x");
-		sb.append(this.recupimg().getHeight(null));
+		sb.append(this.recupimg().getHeight());
 		this.resolution=sb.toString();
 	}
 

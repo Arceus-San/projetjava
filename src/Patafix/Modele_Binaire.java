@@ -16,7 +16,7 @@ public class Modele_Binaire extends Modele{
 
 	public Modele_Binaire(){}
 
-	public void chargerDonn�es(String dir) {
+	public void chargerDonnées(String dir) {
 
 		System.out.println("Charger données Modele");
 
@@ -36,7 +36,7 @@ public class Modele_Binaire extends Modele{
 		} catch (FileNotFoundException e) {
 			//Fallback
 			System.out.println("Les fichiers images et dico n'existent pas");
-			super.chargerDonn�es(dir);
+			super.chargerDonnées(dir);
 		} catch (IOException | ClassNotFoundException e2) {
 			//throw new RuntimeException("Lecture des donn�es impossible ou donn�es corrompues");
 			e2.printStackTrace();
@@ -46,7 +46,7 @@ public class Modele_Binaire extends Modele{
 
 	public void enregistrement() {
 
-		System.out.println("Enregistrer donn�es Modele");
+		System.out.println("Enregistrer données Modele");
 
 		File fichier =  new File("images.dat") ;
 		File fichier2 =  new File("dico.dat") ;

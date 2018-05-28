@@ -1,11 +1,11 @@
 package Patafix;
 
-import java.awt.Image;
+//import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
-
+import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
 
 public abstract class Modele extends Observable{
@@ -13,11 +13,11 @@ public abstract class Modele extends Observable{
 	public ArrayList<Images> images;
 	public Dico dico;
 
-	int indexImageSelectionnée=0;
+	int indexImageSelectionnÃ©e=0;
 
 	public Modele() {}
 
-	public void chargerDonnées(String dir) {
+	public void chargerDonnÃ©es(String dir) {
 
 		File repImages = new File(dir);
 		File[] imagesListe = repImages.listFiles();
@@ -26,34 +26,28 @@ public abstract class Modele extends Observable{
 		System.out.println("Charger donnï¿½es Modele");
 		for (File file : imagesListe) {
 			if(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".jpeg")){
-			try {
-				Image img = ImageIO.read(file);
-				Images img_att=new Images(img);
-				this.images.add(img_att);
+			Image img = new Image(file.getPath());
+			Images img_att=new Images(img);
+			this.images.add(img_att);
 
 
-				String nom = file.getName();
-				int index=0;
-				while(nom.charAt(index)!='.'){
-					index+=1;
-				}
-				String nom2 = nom.substring(0,index);
-				img_att.nomimg = nom2;
-				if (!this.dico.containsKey(nom2))
-					this.dico.put(nom2.toString(), new ArrayList<Images>());
-				this.dico.get(nom2).add(img_att);
-
-				img_att.complete();
-
-				String dimension = img_att.resolution;
-				if (!this.dico.containsKey(dimension))
-					this.dico.put(dimension, new ArrayList<Images>());
-				this.dico.get(dimension).add(img_att);
-
-
-			} catch (IOException e) {
-				e.printStackTrace();
+			String nom = file.getName();
+			int index=0;
+			while(nom.charAt(index)!='.'){
+				index+=1;
 			}
+			String nom2 = nom.substring(0,index);
+			img_att.nomimg = nom2;
+			if (!this.dico.containsKey(nom2))
+				this.dico.put(nom2.toString(), new ArrayList<Images>());
+			this.dico.get(nom2).add(img_att);
+
+			img_att.complete();
+
+			String dimension = img_att.resolution;
+			if (!this.dico.containsKey(dimension))
+				this.dico.put(dimension, new ArrayList<Images>());
+			this.dico.get(dimension).add(img_att);
 			}
 		}
 
@@ -74,7 +68,7 @@ public abstract class Modele extends Observable{
 
 	public static void main(String[] args) {
 		Modele_Binaire modele = new Modele_Binaire();
-		modele.chargerDonnées("Photos/");
+		modele.chargerDonnÃ©es("Photos/");
 		System.out.println(modele.dico.get("ratatouille"));
 
 		/*Images rata = modele.recupimg("rata");
