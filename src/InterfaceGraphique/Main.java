@@ -27,6 +27,7 @@ public class Main extends Application{
 		Scene scene = new Scene(root, 1920 ,1080);
 		primaryStage.setTitle("PicsFinder");
 		primaryStage.setScene(scene);
+		primaryStage.setMaximized(true);
 		primaryStage.show();
 
 

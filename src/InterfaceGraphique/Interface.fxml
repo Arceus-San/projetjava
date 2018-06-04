@@ -4,107 +4,142 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="1080" maxWidth="1920" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080" prefWidth="1920" style="-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceGraphique.Controller">
+<Pane maxHeight="1080" maxWidth="1920" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080" prefWidth="1920" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceGraphique.Controller">
    <children>
-      <SplitPane dividerPositions="0.5" layoutX="-1.0" layoutY="155.0" prefHeight="926.0" prefWidth="1920.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);" SplitPane.resizableWithParent="false">
-               <children>
-                  <ChoiceBox fx:id="chb1" layoutX="33.0" layoutY="298.0" prefWidth="150.0" style="-fx-background-radius: 50; -fx-background-color: #d5f4e6;" AnchorPane.topAnchor="298.0" />
-                  <Button fx:id="b1" layoutX="22.0" layoutY="416.0" mnemonicParsing="false" onAction="#buttonaction" prefHeight="37.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Nouvelle Recherche" />
-                  <CheckBox fx:id="cb1" layoutX="62.0" layoutY="107.0" mnemonicParsing="false" text="4K" />
-                  <CheckBox fx:id="cb2" layoutX="62.0" layoutY="140.0" mnemonicParsing="false" text="1920x1080" />
-                  <CheckBox fx:id="cb3" layoutX="62.0" layoutY="172.0" mnemonicParsing="false" text="1280x720" />
-                  <CheckBox fx:id="cb4" layoutX="62.0" layoutY="201.0" mnemonicParsing="false" text="Autres" />
-                  <Label fx:id="label1" layoutX="33.0" layoutY="71.0" text="Résolution">
-                     <font>
-                        <Font size="21.0" />
-                     </font></Label>
-                  <Label fx:id="label2" layoutX="33.0" layoutY="14.0" text="Filtres">
-                     <font>
-                        <Font size="30.0" />
-                     </font></Label>
-                  <ChoiceBox fx:id="chb2" layoutX="32.0" layoutY="349.0" prefHeight="31.0" prefWidth="150.0" style="-fx-background-radius: 50; -fx-background-color: #d5f4e6;" />
-               </children>
-            </AnchorPane>
-          <AnchorPane maxHeight="924.0" maxWidth="1693.0" minHeight="925.0" minWidth="1693.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);" SplitPane.resizableWithParent="false">
-               <children>
-                  <ImageView fx:id="imgview1" fitHeight="185.0" fitWidth="282.0" layoutX="45.0" layoutY="50.0" pickOnBounds="true">
-                     <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview2" fitHeight="185.0" fitWidth="282.0" layoutX="375.0" layoutY="50.0" pickOnBounds="true" style="-fx-background-radius: 5.0;"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview3" fitHeight="185.0" fitWidth="282.0" layoutX="705.0" layoutY="50.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview4" fitHeight="185.0" fitWidth="282.0" layoutX="1035.0" layoutY="50.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview5" fitHeight="185.0" fitWidth="282.0" layoutX="1365.0" layoutY="50.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview6" fitHeight="185.0" fitWidth="282.0" layoutX="45.0" layoutY="320.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview7" fitHeight="185.0" fitWidth="282.0" layoutX="375.0" layoutY="320.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview8" fitHeight="185.0" fitWidth="282.0" layoutX="705.0" layoutY="320.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview9" fitHeight="185.0" fitWidth="282.0" layoutX="1035.0" layoutY="320.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview10" fitHeight="185.0" fitWidth="282.0" layoutX="1365.0" layoutY="320.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview11" fitHeight="185.0" fitWidth="282.0" layoutX="45.0" layoutY="590.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview12" fitHeight="185.0" fitWidth="282.0" layoutX="375.0" layoutY="590.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview13" fitHeight="185.0" fitWidth="282.0" layoutX="705.0" layoutY="590.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview14" fitHeight="185.0" fitWidth="282.0" layoutX="1035.0" layoutY="590.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-                  <ImageView fx:id="imgview15" fitHeight="185.0" fitWidth="282.0" layoutX="1365.0" layoutY="590.0" pickOnBounds="true"> <effect>
-                        <DropShadow height="80.0" radius="44.5" width="100.0" />
-                     </effect></ImageView>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <TabPane prefHeight="37.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="TabPane" layoutY="143.0" prefHeight="937.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab fx:id="galerie" closable="false" text="Galerie" style="-fx-background-color: #6b5b95;">
+            <Tab fx:id="TabGalerie" closable="false" text="Galerie">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane fx:id="SplitPaneGalerie" dividerPositions="0.5" prefHeight="926.0" prefWidth="1920.0">
+                          <items>
+                            <AnchorPane fx:id="AnchorPaneFiltres" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+                                 <children>
+                                    <ChoiceBox fx:id="chb1" layoutX="96.0" layoutY="282.0" prefHeight="31.0" prefWidth="115.0" AnchorPane.topAnchor="282.0" />
+                                    <Button fx:id="B2" layoutX="22.0" layoutY="545.0" mnemonicParsing="false" onAction="#NouvelleRecherche" prefHeight="37.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Nouvelle Recherche" />
+                                    <CheckBox fx:id="cb1" layoutX="62.0" layoutY="107.0" mnemonicParsing="false" text="4K" />
+                                    <CheckBox fx:id="cb2" layoutX="62.0" layoutY="140.0" mnemonicParsing="false" text="1920x1080" />
+                                    <CheckBox fx:id="cb3" layoutX="62.0" layoutY="172.0" mnemonicParsing="false" text="1280x720" />
+                                    <CheckBox fx:id="cb4" layoutX="62.0" layoutY="201.0" mnemonicParsing="false" text="Autres" />
+                                    <Label fx:id="label1" layoutX="33.0" layoutY="71.0" text="Résolution">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="label2" layoutX="33.0" layoutY="14.0" text="Filtres">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="chb2" layoutX="62.0" layoutY="347.0" prefHeight="26.0" prefWidth="142.0" />
+                                    <Label layoutX="11.0" layoutY="284.0" text="Couleur :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="12.0" layoutY="349.0" text="Ville :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="11.0" layoutY="408.0" text="Personne :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="GalerieTextPersonne" layoutX="98.0" layoutY="406.0" prefHeight="31.0" prefWidth="111.0" />
+                                    <Label layoutX="14.0" layoutY="466.0" text="Tag :">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="GalerieTextTag" layoutX="61.0" layoutY="464.0" prefHeight="26.0" prefWidth="145.0" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane maxHeight="924.0" maxWidth="1693.0" minHeight="925.0" minWidth="1693.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
+                                 <children>
+                                    <ScrollPane fx:id="ScrollPaneGalerie" prefHeight="925.0" prefWidth="1693.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <TilePane fx:id="TilePaneGalerie" prefHeight="925.0" prefWidth="1693.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="edit" closable="false" text="Editeur d'image" style="-fx-background-color: #6b5b95;">
+            <Tab fx:id="TabImage" closable="false" text="Image">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane fx:id="SplitPaneImage" dividerPositions="0.2" layoutX="350.0" layoutY="200.0" prefHeight="898.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane fx:id="AnchorPaneImageDetails" minHeight="0.0" minWidth="0.0" prefHeight="896.0" prefWidth="1261.0">
+                                 <children>
+                                    <Label alignment="CENTER" layoutX="20.0" layoutY="43.0" prefHeight="39.0" prefWidth="373.0" text="Détails de l'image" textAlignment="JUSTIFY" underline="true">
+                                       <font>
+                                          <Font size="34.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="160.0" text="Nom :">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="22.0" layoutY="239.0" text="Couleur :">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="24.0" layoutY="314.0" text="Résolution :">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="26.0" layoutY="395.0" text="Personnes :">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="26.0" layoutY="531.0" text="Villes :">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="29.0" layoutY="676.0" text="Tags :">
+                                       <font>
+                                          <Font size="28.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ImageNom" editable="false" layoutX="113.0" layoutY="169.0" />
+                                    <TextField fx:id="ImageCoul" layoutX="153.0" layoutY="244.0" />
+                                    <TextField fx:id="ImageRes" layoutX="178.0" layoutY="319.0" />
+                                    <TextArea fx:id="ImagePers" layoutX="178.0" layoutY="404.0" prefHeight="88.0" prefWidth="187.0" />
+                                    <TextArea fx:id="ImageVille" layoutX="128.0" layoutY="540.0" prefHeight="97.0" prefWidth="238.0" />
+                                    <TextArea fx:id="ImageTag" layoutX="113.0" layoutY="687.0" prefHeight="158.0" prefWidth="248.0" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane fx:id="AnchorPaneImageGrande" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                          </items>
+                        </SplitPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
          </tabs>
       </TabPane>
-      <TextField fx:id="brech" layoutX="233.0" layoutY="77.0" onAction="#barrerecherche" prefHeight="39.0" prefWidth="1578.0" />
-      <Button fx:id="b2" layoutX="55.0" layoutY="76.0" mnemonicParsing="false" onAction="#editimage" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Editer image">
+      <TextField fx:id="brech" layoutX="233.0" layoutY="48.0" onAction="#barrerecherche" prefHeight="39.0" prefWidth="1623.0" />
+      <Button fx:id="B1" layoutX="47.0" layoutY="48.0" mnemonicParsing="false" onAction="#OuvrirImage" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Ouvrir l'image">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
