@@ -14,7 +14,10 @@ import Patafix.Modele;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -28,8 +31,14 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -93,7 +102,8 @@ public class Controller extends AnchorPane implements Observer{
 	private AnchorPane AnchorPaneImageGrande;
 	@FXML
 	public Modele modele;
-
+	@FXML
+	public String RecupEvt;
 
 	Object rech[] = {"",new ArrayList<String>()};
 
@@ -115,16 +125,7 @@ public class Controller extends AnchorPane implements Observer{
 		ObservableList<String> villes = FXCollections.observableArrayList("...","Paris","New-York", "Madrid","Berlin","Rome","Chicago","Sydney");/*Ajout des elements dans la liste de choix des villes(ï¿½ modifier, liste test)*/
 		chb2.setItems(villes);
 		chb2.getSelectionModel().selectFirst();/*Selectionne par dï¿½faut le premier element de la liste*/
-		//genereimages();
-	}
-
-
-	public void OuvrirImage(ActionEvent event){
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-		    alert.setTitle("Affichage de l'image");
-		    alert.setHeaderText(null);
-		    alert.setContentText("Veuillez sélectionner une image avant de l'ouvrir");
-		    alert.showAndWait();
+		//GenereImages(images);
 	}
 
 		//File file = new File("C:/Users/Mofid Krim/Desktop/L2/Java_Project/projetjava/Photos/louvre.jpg");
@@ -189,6 +190,78 @@ public class Controller extends AnchorPane implements Observer{
 		img.add(this.images);
 
 	}
+
+	//generation des images dans la galerie d'images
+
+	private void GenereImages(ArrayList<Images> Liste) {
+
+		TilePaneGalerie.setPadding(new Insets(15, 15, 15, 15));
+		TilePaneGalerie.setHgap(10);
+
+		for (int i = 0; i < Liste.size(); i++) {
+			ImageView imageView;
+			imageView = createImageView(Liste.get(i));
+			imageView.setId(String.valueOf(i));
+			imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+				public void handle(MouseEvent event) { //on affiche l'image dans l'onglet Image
+					if (event.getButton().equals(MouseButton.PRIMARY)) {
+						if (event.getClickCount() == 1 && B1.isPressed()==true) {
+							TabPane.getSelectionModel().selectNext();
+							String mouseEvt = event.getPickResult().getIntersectedNode().getId();
+							RecupEvt= mouseEvt;
+							ImageView cadre = new ImageView();
+							final Images img = Liste.get(Integer.parseInt(mouseEvt));
+							Image IMAGE = new Image("file:" + img.recupimg());
+							BorderPane borderPane = new BorderPane();
+							cadre.setImage(IMAGE);
+							cadre.setFitHeight(AnchorPaneImageGrande.getHeight());
+							cadre.setPreserveRatio(true);
+							cadre.setSmooth(true);
+							cadre.setCache(true);
+							borderPane.setCenter(cadre);
+							AnchorPaneImageGrande.getChildren().add(borderPane);
+							AnchorPaneImageGrande.getChildren().clear();
+							AnchorPaneImageGrande.getChildren().add(cadre);
+
+
+						}
+						else if (event.getClickCount() == 0 && B1.isPressed()==true){
+							Alert alert = new Alert(Alert.AlertType.INFORMATION);
+						    alert.setTitle("Affichage de l'image");
+						    alert.setHeaderText(null);
+						    alert.setContentText("Veuillez sélectionner une image avant de l'ouvrir");
+						    alert.showAndWait();
+						}
+					}
+				}
+
+			});
+
+
+			VBox vbox = new VBox();
+
+			vbox.setSpacing(10);
+			vbox.getChildren().addAll(imageView);
+			vbox.setAlignment(Pos.CENTER);
+			TilePaneGalerie.getChildren().addAll(vbox);
+		}
+
+		ScrollPaneGalerie.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		ScrollPaneGalerie.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+		ScrollPaneGalerie.setFitToWidth(true);
+		ScrollPaneGalerie.setContent(TilePaneGalerie);
+
+	}
+
+
+	//Création d'une imageview
+	private ImageView createImageView(Images img) {
+		Image image = new Image("file:" + img, 150, 0, true, true);
+		ImageView imageView = new ImageView(image);
+		imageView.setFitWidth(150);
+		return imageView;
+	}
+
 
 }
 

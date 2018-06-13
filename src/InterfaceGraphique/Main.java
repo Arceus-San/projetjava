@@ -17,20 +17,20 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-	
+
 	public static void main(String[] args) {
 		launch(args);
 
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		Modele_Binaire modele = new Modele_Binaire();
-		modele.chargerDonnées("Photos/");
-		
+		modele.chargerDonn�es("Photos/");
+
 		FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("Interface.fxml"));
 		firstLoader.setController(new Controller(modele));
-		
+
 		//Création de la SCENE
 		Parent firstUI = firstLoader.load();
 		Scene scene = new Scene(firstUI,1920,1080);
@@ -40,7 +40,7 @@ public class Main extends Application{
 		stage.setTitle("Pics Finder");
 		stage.setScene(scene);
 		stage.show();
-		
+
 
 
 	}

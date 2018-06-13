@@ -1,7 +1,7 @@
 package Patafix;
-import java.awt.Color;
-import java.awt.Graphics2D;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
