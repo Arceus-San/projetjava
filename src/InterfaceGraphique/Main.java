@@ -1,6 +1,7 @@
 package InterfaceGraphique;
 
 import Patafix.Modele;
+import Patafix.Modele_Binaire;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -23,21 +24,23 @@ public class Main extends Application{
 	}
 	
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage stage) throws Exception {
+		Modele_Binaire modele = new Modele_Binaire();
+		modele.chargerDonnées("Photos/");
 		
-		//Liaison
-		Modele modele= new Modele();
-		FXMLLoader root = FXMLLoader.load(getClass().getResource("Interface.fxml"));
-		root.setController(new Controller(modele));
+		FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("Interface.fxml"));
+		firstLoader.setController(new Controller(modele));
 		
-		//Scene
-		Parent firstUI = root.load();
+		//Création de la SCENE
+		Parent firstUI = firstLoader.load();
 		Scene scene = new Scene(firstUI,1920,1080);
+
+
+		//Paramètres du STAGE
+		stage.setTitle("Pics Finder");
+		stage.setScene(scene);
+		stage.show();
 		
-		primaryStage.setTitle("PicsFinder");
-		primaryStage.setScene(scene);
-		primaryStage.setMaximized(true);
-		primaryStage.show();
 
 
 	}
