@@ -1,5 +1,6 @@
 package InterfaceGraphique;
 
+import Patafix.Modele;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -15,16 +16,24 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
-
+	
 	public static void main(String[] args) {
 		launch(args);
 
 	}
-
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Interface.fxml"));
-		Scene scene = new Scene(root, 1920 ,1080);
+		
+		//Liaison
+		Modele modele= new Modele();
+		FXMLLoader root = FXMLLoader.load(getClass().getResource("Interface.fxml"));
+		root.setController(new Controller(modele));
+		
+		//Scene
+		Parent firstUI = root.load();
+		Scene scene = new Scene(firstUI,1920,1080);
+		
 		primaryStage.setTitle("PicsFinder");
 		primaryStage.setScene(scene);
 		primaryStage.setMaximized(true);

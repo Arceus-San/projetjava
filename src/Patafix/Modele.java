@@ -15,7 +15,9 @@ public abstract class Modele extends Observable{
 
 	int indexImageSelectionnée=0;
 
+
 	public Modele() {}
+
 
 	public void chargerDonnées(String dir) {
 

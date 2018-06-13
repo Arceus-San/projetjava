@@ -10,6 +10,7 @@ import java.util.Observer;
 import com.sun.javafx.geom.Rectangle;
 
 import Patafix.Images;
+import Patafix.Modele;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -90,7 +91,8 @@ public class Controller extends AnchorPane implements Observer{
 	private TextArea ImageTag;
 	@FXML
 	private AnchorPane AnchorPaneImageGrande;
-
+	@FXML
+	public Modele modele;
 
 
 	Object rech[] = {"",new ArrayList<String>()};
@@ -100,7 +102,9 @@ public class Controller extends AnchorPane implements Observer{
 	ArrayList<Images> images;
 
 
-
+	public Controller(Modele modele) {
+		this.modele = modele;
+	}
 	public void initialize() throws IOException{
 
 
