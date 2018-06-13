@@ -4,6 +4,7 @@ package Patafix;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 import javafx.scene.image.Image;
 import javax.imageio.ImageIO;
@@ -14,7 +15,9 @@ public abstract class Modele extends Observable{
 	public Dico dico;
 
 	int indexImageSelectionnée=0;
-
+	
+	//Tags
+	public HashMap<String, ArrayList<String>> Tags = new HashMap<String , ArrayList<String>>();
 
 	public Modele() {}
 

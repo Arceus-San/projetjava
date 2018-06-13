@@ -9,6 +9,7 @@ import java.util.Observer;
 
 import com.sun.javafx.geom.Rectangle;
 
+import Patafix.Dico;
 import Patafix.Images;
 import Patafix.Modele;
 import javafx.collections.FXCollections;
@@ -125,49 +126,52 @@ public class Controller extends AnchorPane implements Observer{
 		ObservableList<String> villes = FXCollections.observableArrayList("...","Paris","New-York", "Madrid","Berlin","Rome","Chicago","Sydney");/*Ajout des elements dans la liste de choix des villes(� modifier, liste test)*/
 		chb2.setItems(villes);
 		chb2.getSelectionModel().selectFirst();/*Selectionne par d�faut le premier element de la liste*/
+
 		//GenereImages(images);
+
 	}
 
-		//File file = new File("C:/Users/Mofid Krim/Desktop/L2/Java_Project/projetjava/Photos/louvre.jpg");
 
-		//System.out.println(System.getProperty("user.home"));
+	//File file = new File("C:/Users/leolo/Desktop/PROJET/projetjava/Photos/louvre.jpg");
 
-		//System.out.println(file.exists());
+	//System.out.println(System.getProperty("user.home"));
+
+	//System.out.println(file.exists());
 
 
 	public void NouvelleRecherche(ActionEvent event){		/*Fonction qui agit sur le bouton ajouter filtres, on recupere les filtres choisis*/
 		ArrayList<String> filtres = new ArrayList<>();
 		//if(b1.onMouseClickedProperty() != null){
-			if(cb1.isSelected()){
-				filtres.add(cb1.getText());
-			}
-			if(cb2.isSelected()){
-				filtres.add(cb2.getText());
-			}
-			if(cb3.isSelected()){
-				filtres.add(cb3.getText());
-			}
-			if(cb4.isSelected()){
-				filtres.add(cb4.getText());
-			}
-			if(chb1.getValue()!="..."){
-				filtres.add(chb1.getValue());
-			}
-			if(chb2.getValue()!="..."){
-				filtres.add(chb2.getValue());
-			}
-			if(!GalerieTextPersonne.getText().isEmpty()){
-				filtres.add(GalerieTextPersonne.getText());
-			}
-			if(!GalerieTextTag.getText().isEmpty()){
-				filtres.add(GalerieTextTag.getText());
-			}
-			if(!brech.getText().isEmpty()){
-				this.rech[0]=brech.getText();
-			}
-			this.rech[1]=filtres;
-			System.out.println("Recherche : "+this.rech[0]);
-			System.out.println("Filtres : "+this.rech[1]);
+		if(cb1.isSelected()){
+			filtres.add(cb1.getText());
+		}
+		if(cb2.isSelected()){
+			filtres.add(cb2.getText());
+		}
+		if(cb3.isSelected()){
+			filtres.add(cb3.getText());
+		}
+		if(cb4.isSelected()){
+			filtres.add(cb4.getText());
+		}
+		if(chb1.getValue()!="..."){
+			filtres.add(chb1.getValue());
+		}
+		if(chb2.getValue()!="..."){
+			filtres.add(chb2.getValue());
+		}
+		if(!GalerieTextPersonne.getText().isEmpty()){
+			filtres.add(GalerieTextPersonne.getText());
+		}
+		if(!GalerieTextTag.getText().isEmpty()){
+			filtres.add(GalerieTextTag.getText());
+		}
+		if(!brech.getText().isEmpty()){
+			this.rech[0]=brech.getText();
+		}
+		this.rech[1]=filtres;
+		System.out.println("Recherche : "+this.rech[0]);
+		System.out.println("Filtres : "+this.rech[1]);
 		//}
 	}
 
@@ -184,6 +188,37 @@ public class Controller extends AnchorPane implements Observer{
 			System.out.println("Filtres : "+this.rech[1]);
 		}
 	}
+
+
+	private void DeleteTags(int id, ArrayList<String> A, ArrayList<String> B,
+			ArrayList<Images> Img) {
+		for (int i = 1; i < A.size(); i++) {
+			ArrayList<String> C = (modele.Tags.get(A.get(i)));
+			if (!B.contains(A.get(i))) {
+				C.remove(Img.get(id).recupimg());
+			}
+		}
+
+		if (B.size() != A.size()) {
+			Dico Aset = new Dico();
+			Dico Bset = new Dico();
+			Bset.remove(Aset);
+
+			ArrayList<String> Dif = new ArrayList<String>();
+			Dif.add(Bset.toString());
+			for (int j = 0; j < Dif.size(); j++) {
+				if (modele.Tags.containsKey(Dif.get(j))) {
+					modele.Tags.get(Dif.get(j)).add(Img.get(id).recupimg().toString());
+				} else {
+					ArrayList<String> D =new ArrayList<String>();
+					D.add(Img.get(id).recupimg().toString());
+					modele.Tags.put(Dif.get(j), D);
+				}
+			}
+		}
+
+	}
+
 	@Override
 	public void update(Observable obs, Object obj) {
 		ArrayList img= new ArrayList();
