@@ -124,7 +124,7 @@ public class Controller{
 		ObservableList<String> villes = FXCollections.observableArrayList("...","Paris","New-York", "Madrid","Berlin","Rome","Chicago","Sydney");/*Ajout des elements dans la liste de choix des villes(� modifier, liste test)*/
 		chb2.setItems(villes);
 		chb2.getSelectionModel().selectFirst();/*Selectionne par d�faut le premier element de la liste*/
-		//GenereImages(this.modele.images);
+		GenereImages(this.modele.images);
 
 	}
 
@@ -224,6 +224,8 @@ public class Controller{
 			ImageView imageView;
 			imageView = createImageView(this.modele.images.get(0));
 			imageView.setId(String.valueOf(0));
+			/*imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+>>>>>>> c559cdd75dab6e5b053d95059dd40d725754510c
 
 			/*imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 >>>>>>> Stashed changes
