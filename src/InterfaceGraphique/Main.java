@@ -41,6 +41,7 @@ public class Main extends Application{
 		//Paramètres du STAGE
 		stage.setTitle("Pics Finder");
 		stage.setScene(scene);
+		stage.setMaximized(true);
 		stage.show();
 
 

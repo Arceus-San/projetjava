@@ -23,7 +23,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <SplitPane fx:id="SplitPaneGalerie" dividerPositions="0.5" prefHeight="926.0" prefWidth="1920.0">
+                        <SplitPane fx:id="SplitPaneGalerie" dividerPositions="0.2" prefHeight="926.0" prefWidth="1920.0">
                           <items>
                             <AnchorPane fx:id="AnchorPaneFiltres" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                                  <children>
@@ -85,7 +85,7 @@
                      <children>
                         <SplitPane fx:id="SplitPaneImage" dividerPositions="0.2" layoutX="350.0" layoutY="200.0" prefHeight="898.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <items>
-                            <AnchorPane fx:id="AnchorPaneImageDetails" minHeight="0.0" minWidth="0.0" prefHeight="896.0" prefWidth="1261.0">
+                            <AnchorPane fx:id="AnchorPaneImageDetails" minHeight="0.0" minWidth="0.0" prefHeight="896.0" prefWidth="1261.0" SplitPane.resizableWithParent="false">
                                  <children>
                                     <Label alignment="CENTER" layoutX="20.0" layoutY="43.0" prefHeight="39.0" prefWidth="373.0" text="Détails de l'image" textAlignment="JUSTIFY" underline="true">
                                        <font>
@@ -97,40 +97,40 @@
                                           <Font size="28.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="22.0" layoutY="239.0" text="Couleur :">
+                                    <Label layoutX="20.0" layoutY="255.0" text="Couleur :">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="24.0" layoutY="314.0" text="Résolution :">
+                                    <Label layoutX="24.0" layoutY="346.0" text="Résolution :">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="26.0" layoutY="395.0" text="Personnes :">
+                                    <Label layoutX="26.0" layoutY="448.0" text="Personnes :">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="26.0" layoutY="531.0" text="Villes :">
+                                    <Label layoutX="26.0" layoutY="544.0" text="Villes :">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="29.0" layoutY="676.0" text="Tags :">
+                                    <Label layoutX="29.0" layoutY="647.0" text="Tags :">
                                        <font>
                                           <Font size="28.0" />
                                        </font>
                                     </Label>
                                     <TextField fx:id="ImageNom" editable="false" layoutX="113.0" layoutY="169.0" />
-                                    <TextField fx:id="ImageCoul" layoutX="153.0" layoutY="244.0" />
-                                    <TextField fx:id="ImageRes" editable="false" layoutX="178.0" layoutY="319.0" />
-                                    <TextArea fx:id="ImagePers" layoutX="178.0" layoutY="404.0" prefHeight="88.0" prefWidth="187.0" />
-                                    <TextArea fx:id="ImageVille" layoutX="128.0" layoutY="540.0" prefHeight="97.0" prefWidth="238.0" />
-                                    <TextArea fx:id="ImageTag" layoutX="113.0" layoutY="687.0" prefHeight="158.0" prefWidth="248.0" />
+                                    <TextField fx:id="ImageCoul" layoutX="151.0" layoutY="260.0" />
+                                    <TextField fx:id="ImageRes" editable="false" layoutX="180.0" layoutY="355.0" />
+                                    <TextArea fx:id="ImagePers" layoutX="180.0" layoutY="455.0" prefHeight="31.0" prefWidth="188.0" />
+                                    <TextArea fx:id="ImageVille" layoutX="128.0" layoutY="544.0" prefHeight="39.0" prefWidth="210.0" />
+                                    <TextArea fx:id="ImageTag" layoutX="115.0" layoutY="659.0" prefHeight="158.0" prefWidth="236.0" />
                                  </children>
                               </AnchorPane>
-                            <AnchorPane fx:id="AnchorPaneImageGrande" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+                            <AnchorPane fx:id="AnchorPaneImageGrande" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false" />
                           </items>
                         </SplitPane>
                      </children></AnchorPane>
