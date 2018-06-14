@@ -3,6 +3,7 @@ package InterfaceGraphique;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.StandardSocketOptions;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -45,7 +46,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 import javafx.util.Callback;
 
-public class Controller extends AnchorPane implements Observer{
+public class Controller{
 
 	@FXML
 	private Button B1;
@@ -108,9 +109,6 @@ public class Controller extends AnchorPane implements Observer{
 
 	Object rech[] = {"",new ArrayList<String>()};
 
-
-	ArrayList<ImageView> imageview=new ArrayList();
-	ArrayList<Images> images;
 
 
 	public Controller(Modele modele) {
@@ -183,18 +181,37 @@ public class Controller extends AnchorPane implements Observer{
 		}
 		else{
 			this.rech[0]=brech.getText();
-			System.out.println("Recherche : "+this.rech[0]);
-			System.out.println("Filtres : "+this.rech[1]);
+			resultrech();
 		}
 	}
-
-
-	@Override
-	public void update(Observable obs, Object obj) {
-		ArrayList img= new ArrayList();
-		img.add(this.images);
+	
+	public void resultrech(){
+		System.out.println(" ");
+		System.out.println("Recherche : "+this.rech[0]);
+		System.out.println("Filtres : "+this.rech[1]);
+		try{
+			ArrayList<String> filtr = (ArrayList<String>) this.rech[1];
+			if(filtr.isEmpty()){
+				System.out.println("Pas de filtres");
+			}
+			ArrayList<Images> result = this.modele.dico.recherche((String) this.rech[0]);
+			for(int i=0;i<result.size();i++){
+				System.out.print(result.get(i).nomimg);
+				System.out.print(" ");
+				ImageView imageView;
+				imageView = createImageView(result.get(0));
+				imageView.setId(String.valueOf(0));
+				
+				
+			}
+			
+		}catch(NullPointerException npe){
+			System.out.println("La liste correspondant Ã  cette image est vide");
+		}
 
 	}
+
+
 
 	//generation des images dans la galerie d'images
 
@@ -205,10 +222,11 @@ public class Controller extends AnchorPane implements Observer{
 
 		//for (int i = 0; i < Liste.size(); i++) {
 			ImageView imageView;
-			imageView = createImageView(Liste.get(1).recupimg());
-			imageView.setId(String.valueOf(1));
-			/*imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			imageView = createImageView(this.modele.images.get(0));
+			imageView.setId(String.valueOf(0));
 
+			/*imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+>>>>>>> Stashed changes
 				public void handle(MouseEvent event) { //on affiche l'image dans l'onglet Image
 
 					if (event.getButton().equals(MouseButton.PRIMARY)) {
@@ -247,6 +265,16 @@ public class Controller extends AnchorPane implements Observer{
 
 
 
+<<<<<<< Updated upstream
+=======
+						}
+						else if (event.getClickCount() == 0 && B1.isPressed()==true){
+							Alert alert = new Alert(Alert.AlertType.INFORMATION);
+						    alert.setTitle("Affichage de l'image");
+						    alert.setHeaderText(null);
+						    alert.setContentText("Veuillez sï¿½lectionner une image avant de l'ouvrir");
+						    alert.showAndWait();
+>>>>>>> Stashed changes
 						}
 					}
 				}
@@ -286,10 +314,11 @@ public class Controller extends AnchorPane implements Observer{
 	}
 
 
-	//Création d'une imageview
-	private ImageView createImageView(Image img) {
-		ImageView imageView = new ImageView(img);
+	//Crï¿½ation d'une imageview
+	private ImageView createImageView(Images img) {
+		ImageView imageView = new ImageView(img.recupimg());
 		imageView.setFitWidth(150);
+		System.out.println(img.recupimg());
 		return imageView;
 	}
 

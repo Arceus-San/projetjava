@@ -12,19 +12,19 @@ public class Dico extends HashMap<String , ArrayList<Images>> implements Seriali
 		super();
 	}
 
-	public ArrayList<Images> recherche(String s){
-		Set<String> clÈs = this.keySet();
+	public ArrayList<Images> recherche(String rech){
+		Set<String> cl√©s = this.keySet();
 
 		//Version "ou"
-		if(s.contains(" ")){
-			String[] param = s.split("\\s+");
+		if(rech.contains(" ")){
+			String[] param = rech.split("\\s+");
 			ArrayList<Images> resultat = new ArrayList<Images>();
-			String[] clÈtab = clÈs.toArray(new String[clÈs.size()]);
+			String[] cl√©tab = cl√©s.toArray(new String[cl√©s.size()]);
 			for(int i=0;i<param.length;i++){
-				if(clÈs.contains(param[i])){
-					for(int j=0;j<clÈtab.length;j++){
-						if(param[i].equals(clÈtab[j])){
-							ArrayList<Images> temp = this.get(clÈtab[j]);
+				if(cl√©s.contains(param[i])){
+					for(int j=0;j<cl√©tab.length;j++){
+						if(param[i].equals(cl√©tab[j])){
+							ArrayList<Images> temp = this.get(cl√©tab[j]);
 							for(int k=0;k<temp.size();k++){
 								if(!resultat.contains(temp.get(k))){
 									resultat.add(temp.get(k));
@@ -73,8 +73,8 @@ public class Dico extends HashMap<String , ArrayList<Images>> implements Seriali
 		}*/
 
 		else{
-			if(clÈs.contains(s)){
-				return this.get(s);
+			if(cl√©s.contains(rech)){
+				return this.get(rech);
 			}
 			else{
 				/*String[] cl√©tab = cl√©s.toArray(new String[cl√©s.size()]);

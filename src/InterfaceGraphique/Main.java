@@ -26,7 +26,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage stage) throws Exception {
 		Modele_Binaire modele = new Modele_Binaire();
-		modele.chargerDonn�es("Photos/");
+		modele.chargerDonnées("Photos/");
 
 		FXMLLoader firstLoader = new FXMLLoader(getClass().getResource("Interface.fxml"));
 		firstLoader.setController(new Controller(modele));
@@ -36,7 +36,7 @@ public class Main extends Application{
 		Scene scene = new Scene(firstUI,1920,1080);
 
 		//CSS
-		scene.getStylesheets().add(getClass().getResource("interface.css").toExternalForm());
+		//scene.getStylesheets().add(getClass().getResource("interface.css").toExternalForm());
 		
 		//Paramètres du STAGE
 		stage.setTitle("Pics Finder");
@@ -44,8 +44,9 @@ public class Main extends Application{
 		stage.setMaximized(true);
 		stage.show();
 
+		//stage.setOnHiding(event -> modele.enregistrement());
 
+	
 
 	}
-
 }

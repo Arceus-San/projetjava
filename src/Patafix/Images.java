@@ -21,22 +21,28 @@ public class Images implements Serializable{
 	public ArrayList<String> personnes = new ArrayList<String>();
 	public String ville;
 	public ArrayList<String> tags = new ArrayList<String>();
+	public String path;
 
-	public Images(Image i){
-
+	public Images(String p){
+		this.path=p;
+	}
+	
+	public String toString(){
+		return this.path + "";
 	}
 
 	public Image recupimg(){
-		String nom = this.nomimg+".jpg";
-		Image img = new Image("Photos/"+nom);
-		return img;
+		//String nom = this.nomimg+".jpg";
+		//Image img = new Image("Photos/"+nom);
+		Image temp = new Image("file:" + this.path);
+		return temp;
 	}
 
 	public void complete(){
 		StringBuilder sb = new StringBuilder();
-		sb.append(this.recupimg().getWidth());
+		sb.append((int)this.recupimg().getWidth());
 		sb.append("x");
-		sb.append(this.recupimg().getHeight());
+		sb.append((int)this.recupimg().getHeight());
 		this.resolution=sb.toString();
 	}
 

@@ -14,7 +14,7 @@ public abstract class Modele extends Observable{
 	public ArrayList<Images> images;
 	public Dico dico;
 
-	int indexImageSelectionnée=0;
+	int indexImageSelectionnÃ©e=0;
 	
 	//Tags
 	public HashMap<String, ArrayList<String>> Tags = new HashMap<String , ArrayList<String>>();
@@ -22,17 +22,18 @@ public abstract class Modele extends Observable{
 	public Modele() {}
 
 
-	public void chargerDonnées(String dir) {
+	public void chargerDonnÃ©es(String dir) {
 
 		File repImages = new File(dir);
 		File[] imagesListe = repImages.listFiles();
 		this.images = new ArrayList<>();
 		this.dico = new Dico();
-		System.out.println("Charger donnï¿½es Modele");
+		System.out.println("Charger donnÃ©es Modele");
 		for (File file : imagesListe) {
 			if(file.getName().contains(".jpg") || file.getName().contains(".png") || file.getName().contains(".jpeg")){
-			Image img = new Image(file.getPath());
-			Images img_att=new Images(img);
+			//Image img = new Image(file.getPath());
+				
+			Images img_att=new Images(file.toString());
 			this.images.add(img_att);
 
 
@@ -54,6 +55,7 @@ public abstract class Modele extends Observable{
 				this.dico.put(dimension, new ArrayList<Images>());
 			this.dico.get(dimension).add(img_att);
 			}
+			
 		}
 
 		this.notifyObservers(this.images);
@@ -73,7 +75,7 @@ public abstract class Modele extends Observable{
 
 	public static void main(String[] args) {
 		Modele_Binaire modele = new Modele_Binaire();
-		modele.chargerDonnées("Photos/");
+		modele.chargerDonnÃ©es("Photos/");
 		System.out.println(modele.dico.get("ratatouille"));
 
 		/*Images rata = modele.recupimg("rata");
