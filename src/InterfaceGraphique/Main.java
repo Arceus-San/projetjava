@@ -35,7 +35,9 @@ public class Main extends Application{
 		Parent firstUI = firstLoader.load();
 		Scene scene = new Scene(firstUI,1920,1080);
 
-
+		//CSS
+		scene.getStylesheets().add(getClass().getResource("interface.css").toExternalForm());
+		
 		//Paramètres du STAGE
 		stage.setTitle("Pics Finder");
 		stage.setScene(scene);

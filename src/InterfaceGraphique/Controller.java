@@ -257,6 +257,22 @@ public class Controller extends AnchorPane implements Observer{
 							AnchorPaneImageGrande.getChildren().add(borderPane);
 							AnchorPaneImageGrande.getChildren().clear();
 							AnchorPaneImageGrande.getChildren().add(cadre);
+							
+							ImageNom.textProperty().setValue(img.nomimg);
+							ImageTag.textProperty().setValue(img.tags.toString());
+							ImageVille.textProperty().setValue(img.ville);
+							ImageRes.textProperty().setValue(img.resolution);
+							ImagePers.textProperty().setValue(img.personnes.toString());
+							ImageCoul.textProperty().setValue(img.couleur.toString());
+							SplitPaneImage.setDividerPositions(0.2f);
+
+							ImageNom.setEditable(false);
+							ImageTag.setEditable(true);
+							ImageVille.setEditable(false);
+							ImageRes.setEditable(false);
+							ImagePers.setEditable(false);
+							ImageCoul.setEditable(false);
+						
 
 
 						}
@@ -270,6 +286,22 @@ public class Controller extends AnchorPane implements Observer{
 					}
 				}
 
+			});
+			
+			ImageTag.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				@Override
+				public void handle(KeyEvent keyEvent) {
+					if (keyEvent.getCode() == KeyCode.ENTER) {
+						ArrayList<String> before = new ArrayList<>();
+						//before = Liste.get(Integer.parseInt(RecupEvt)).tags;
+						String text = ImageTag.getText().trim().replaceAll("\n", "").replaceAll("\r", "")
+								.replaceAll("\\s+", "");
+						//Liste.get(Integer.parseInt(RecupEvt)).Set_Tags(text);
+						ArrayList<String> after = new ArrayList<>();
+						//after = Liste.get(Integer.parseInt(RecupEvt)).tags;
+						DeleteTags(Integer.parseInt(RecupEvt), before, after, Liste);
+					}
+				}
 			});
 
 
@@ -285,6 +317,9 @@ public class Controller extends AnchorPane implements Observer{
 		ScrollPaneGalerie.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		ScrollPaneGalerie.setFitToWidth(true);
 		ScrollPaneGalerie.setContent(TilePaneGalerie);
+		
+		
+		
 
 	}
 
