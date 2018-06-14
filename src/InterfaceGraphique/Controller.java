@@ -245,7 +245,7 @@ public class Controller {
 
 		for (int i = 0; i < Liste.size(); i++) {
 			ImageView imageView;
-			imageView = createImageView(this.modele.images.get(i));
+			imageView = createImageView(Liste.get(i));
 			imageView.setId(String.valueOf(i));
 			imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -278,13 +278,6 @@ public class Controller {
 							ImagePers.textProperty().setValue(img.personnes.toString());
 							ImageCoul.textProperty().setValue(img.couleur.toString());
 							SplitPaneImage.setDividerPositions(0.2f);
-
-							ImageNom.setEditable(false);
-							ImageTag.setEditable(true);
-							ImageVille.setEditable(false);
-							ImageRes.setEditable(false);
-							ImagePers.setEditable(false);
-							ImageCoul.setEditable(false);
 						}
 					}
 
