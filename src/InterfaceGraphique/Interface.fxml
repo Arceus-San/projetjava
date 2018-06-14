@@ -8,7 +8,6 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -125,9 +124,10 @@
                                     <TextField fx:id="ImageNom" editable="false" layoutX="113.0" layoutY="169.0" />
                                     <TextField fx:id="ImageCoul" layoutX="151.0" layoutY="260.0" />
                                     <TextField fx:id="ImageRes" editable="false" layoutX="180.0" layoutY="355.0" />
-                                    <TextArea fx:id="ImagePers" layoutX="180.0" layoutY="455.0" prefHeight="31.0" prefWidth="188.0" />
-                                    <TextArea fx:id="ImageVille" layoutX="128.0" layoutY="544.0" prefHeight="39.0" prefWidth="210.0" />
-                                    <TextArea fx:id="ImageTag" layoutX="115.0" layoutY="659.0" prefHeight="158.0" prefWidth="236.0" />
+                                    <TextField fx:id="ImagePers" layoutX="177.0" layoutY="455.0" prefHeight="33.0" prefWidth="193.0" />
+                                    <TextField fx:id="ImageVille" layoutX="131.0" layoutY="544.0" prefHeight="51.0" prefWidth="233.0" />
+                                    <TextField fx:id="ImageTag" layoutX="131.0" layoutY="652.0" prefHeight="101.0" prefWidth="227.0" />
+                                    <Button fx:id="B3" layoutX="99.0" layoutY="771.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Sauvegarder" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane fx:id="AnchorPaneImageGrande" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false" />

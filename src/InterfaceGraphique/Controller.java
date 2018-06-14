@@ -95,11 +95,13 @@ public class Controller {
 	@FXML
 	private TextField ImageRes;
 	@FXML
-	private TextArea ImagePers;
+	private TextField ImagePers;
 	@FXML
-	private TextArea ImageVille;
+	private TextField ImageVille;
 	@FXML
-	private TextArea ImageTag;
+	private TextField ImageTag;
+	@FXML
+	private Button B3;
 	@FXML
 	private AnchorPane AnchorPaneImageGrande;
 	@FXML
@@ -191,8 +193,9 @@ public class Controller {
 
 	public void barrerecherche(
 			ActionEvent event) { /*
-									 * Fonction qui permet de recuperer les valeurs
-									 * rentr�s dans la barre de recherche
+									 * Fonction qui permet de recuperer les
+									 * valeurs rentr�s dans la barre de
+									 * recherche
 									 */
 		// System.out.print(brech.getText());
 
@@ -218,10 +221,13 @@ public class Controller {
 				System.out.print(result.get(i).nomimg);
 				System.out.print(" ");
 				ImageView imageView;
-				imageView = createImageView(result.get(0));
-				imageView.setId(String.valueOf(0));
-
+				imageView = createImageView(result.get(i));
+				imageView.setId(String.valueOf(i));
 			}
+			TilePaneGalerie.getChildren().clear();
+			GenereImages(result);
+
+
 
 		} catch (NullPointerException npe) {
 			System.out.println("La liste correspondant à cette image est vide");
@@ -233,8 +239,9 @@ public class Controller {
 
 	private void GenereImages(ArrayList<Images> Liste) {
 
-		TilePaneGalerie.setPadding(new Insets(20, 20, 20, 20));
+		TilePaneGalerie.setPadding(new Insets(30, 20, 20, 20));
 		TilePaneGalerie.setHgap(50);
+		TilePaneGalerie.setVgap(50);
 
 		for (int i = 0; i < Liste.size(); i++) {
 			ImageView imageView;
@@ -320,7 +327,6 @@ public class Controller {
 		ImageView imageView = new ImageView(img.recupimg());
 		imageView.setFitWidth(282);
 		imageView.setFitHeight(185);
-
 		System.out.println(img.recupimg());
 		return imageView;
 	}
