@@ -1,3 +1,35 @@
-#TabPane{
+#Pane{
+	-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);
+}
 
+#AnchorPaneFiltres{
+	-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);
+}
+
+#TilePaneGalerie{
+	-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);
+}
+
+#AnchorPaneImageDetails{
+	-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);
+}
+
+#AnchorPaneImageGrande{
+	-fx-background-color: linear-gradient(to top, #ff7f50, #6a5acd);
+}
+
+#TabGalerie{
+	-fx-background-color: #80ced6
+}
+
+#TabImage{
+	-fx-background-color: #80ced6
+}
+
+#chb1{
+	-fx-background-radius: 50; -fx-background-color: #d5f4e6 
+}
+
+#chb2{
+	-fx-background-radius: 50; -fx-background-color: #d5f4e6
 }
