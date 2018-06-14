@@ -13,7 +13,6 @@ public class Testfonctions {
 		System.out.println(modele.dico.get("paris"));
 		System.out.println(modele.dico.get("1920x1080"));
 		System.out.println(modele.dico.get("1280x720"));
-		modele.enregistrement();
 
 	}
 

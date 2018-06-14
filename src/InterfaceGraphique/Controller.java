@@ -186,8 +186,9 @@ public class Controller {
 			this.rech[0] = brech.getText();
 		}
 		this.rech[1] = filtres;
-		System.out.println("Recherche : " + this.rech[0]);
-		System.out.println("Filtres : " + this.rech[1]);
+		this.rech[0] = brech.getText();
+
+		resultrech();
 		// }
 	}
 
@@ -198,39 +199,71 @@ public class Controller {
 									 * recherche
 									 */
 		// System.out.print(brech.getText());
+		ArrayList<String> filtres = new ArrayList<>();
+		// if(b1.onMouseClickedProperty() != null){
+		if (cb1.isSelected()) {
+			filtres.add(cb1.getText());
+		}
+		if (cb2.isSelected()) {
+			filtres.add(cb2.getText());
+		}
+		if (cb3.isSelected()) {
+			filtres.add(cb3.getText());
+		}
+		if (cb4.isSelected()) {
+			filtres.add(cb4.getText());
+		}
+		if (chb1.getValue() != "...") {
+			filtres.add(chb1.getValue());
+		}
+		if (chb2.getValue() != "...") {
+			filtres.add(chb2.getValue());
+		}
+		if (!GalerieTextPersonne.getText().isEmpty()) {
+			filtres.add(GalerieTextPersonne.getText());
+		}
+		if (!GalerieTextTag.getText().isEmpty()) {
+			filtres.add(GalerieTextTag.getText());
+		}
+		if (!brech.getText().isEmpty()) {
+			this.rech[0] = brech.getText();
+		}
+		this.rech[1] = filtres;
 
-		if (brech.getText().isEmpty()) {
-			System.out.println("Recherche vide");
-		} else {
 			this.rech[0] = brech.getText();
 			resultrech();
-		}
+		
 	}
 
 	public void resultrech() {
-		System.out.println(" ");
-		System.out.println("Recherche : " + this.rech[0]);
-		System.out.println("Filtres : " + this.rech[1]);
+		System.out.println("Recherche : "+this.rech[0]);
+		System.out.println("Filtres : "+this.rech[1]);
 		try {
 			ArrayList<String> filtr = (ArrayList<String>) this.rech[1];
-			if (filtr.isEmpty()) {
-				System.out.println("Pas de filtres");
+			if (filtr.isEmpty() && brech.getText().isEmpty()) {
+				System.out.println("Pas de recherche ni de filtre");
+				for (int i = 0; i < this.modele.images.size(); i++) {
+					ImageView imageView;
+					imageView = createImageView(this.modele.images.get(i));
+					imageView.setId(String.valueOf(i));
+				}
+				TilePaneGalerie.getChildren().clear();
+				GenereImages(this.modele.images);
 			}
-			ArrayList<Images> result = this.modele.dico.recherche((String) this.rech[0]);
-			for (int i = 0; i < result.size(); i++) {
-				System.out.print(result.get(i).nomimg);
-				System.out.print(" ");
-				ImageView imageView;
-				imageView = createImageView(result.get(i));
-				imageView.setId(String.valueOf(i));
+			else {
+				ArrayList<Images> result = this.modele.dico.recherche_set(this.rech,0);
+				for (int i = 0; i < result.size(); i++) {
+					ImageView imageView;
+					imageView = createImageView(result.get(i));
+					imageView.setId(String.valueOf(i));
+				}
+				TilePaneGalerie.getChildren().clear();
+				GenereImages(result);
 			}
-			TilePaneGalerie.getChildren().clear();
-			GenereImages(result);
-
 
 
 		} catch (NullPointerException npe) {
-			System.out.println("La liste correspondant à cette image est vide");
+			
 		}
 
 	}
@@ -320,7 +353,6 @@ public class Controller {
 		ImageView imageView = new ImageView(img.recupimg());
 		imageView.setFitWidth(282);
 		imageView.setFitHeight(185);
-		System.out.println(img.recupimg());
 		return imageView;
 	}
 

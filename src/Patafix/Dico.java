@@ -2,6 +2,7 @@ package Patafix;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -93,6 +94,48 @@ public class Dico extends HashMap<String , ArrayList<Images>> implements Seriali
 				return new ArrayList<Images>();
 			}
 
+		}
+	}
+	
+	public ArrayList<Images> recherche_set(Object[] tab, int v){
+		Set<String> clés = this.keySet();
+		if(v==0) {
+			ArrayList<String> param = (ArrayList<String>) tab[1];
+			if(param.isEmpty()) {
+				String[] rech = ((String) tab[0]).split("\\s+");
+				ArrayList<Images> resultat = new ArrayList<Images>();
+				for(int i=0;i<rech.length;i++) {
+					System.out.println("Le dico contient la clé "+rech[i]+" : "+clés.contains(rech[i]));
+					if(clés.contains(rech[i])) {
+						System.out.println("Liste correspondant à "+rech[i]+" "+this.get(rech[i]));
+						ArrayList<Images> temp = this.get(rech[i]);
+						for(int j=0;j<temp.size();j++) {
+							if(!resultat.contains(temp.get(j))) {
+								resultat.add(temp.get(j));
+							}
+						}
+					}
+				}
+				return resultat;
+			}
+			else {
+				param.add((String) tab[0]);
+				ArrayList<Images> resultat = new ArrayList<>();
+				for(int i=0;i<param.size();i++) {
+					if(clés.contains(param.get(i))) {
+						ArrayList<Images> temp = this.get(param.get(i));
+						for(int j=0;j<temp.size();j++) {
+							if(!resultat.contains(temp.get(j))) {
+								resultat.add(temp.get(j));
+							}
+						}
+					}
+				}
+				return resultat;
+			}
+		}
+		else {
+			return new ArrayList<Images>();
 		}
 	}
 
