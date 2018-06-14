@@ -126,7 +126,7 @@ public class Controller extends AnchorPane implements Observer{
 		ObservableList<String> villes = FXCollections.observableArrayList("...","Paris","New-York", "Madrid","Berlin","Rome","Chicago","Sydney");/*Ajout des elements dans la liste de choix des villes(� modifier, liste test)*/
 		chb2.setItems(villes);
 		chb2.getSelectionModel().selectFirst();/*Selectionne par d�faut le premier element de la liste*/
-		//GenereImages(this.modele.images);
+		GenereImages(this.modele.images);
 
 	}
 
@@ -206,7 +206,7 @@ public class Controller extends AnchorPane implements Observer{
 		//for (int i = 0; i < Liste.size(); i++) {
 			ImageView imageView;
 			imageView = createImageView(Liste.get(1).recupimg());
-			imageView.setId(String.valueOf(1));
+			//imageView.setId(String.valueOf(1));
 			/*imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
 				public void handle(MouseEvent event) { //on affiche l'image dans l'onglet Image
