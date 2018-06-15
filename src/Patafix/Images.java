@@ -46,60 +46,6 @@ public class Images implements Serializable{
 		this.resolution=sb.toString();
 	}
 
-	public void addPersonne(String p, Dico dico){
-		this.personnes.add(p);
-		if(dico.containsKey(p)){
-			dico.get(p).add(this);
-		}
-		else{
-			ArrayList<Images> nouv = new ArrayList<Images>();
-			nouv.add(this);
-			dico.put(p, nouv);
-		}
-	}
-
-	public void addTag(String p, Dico dico){
-		this.tags.add(p);
-		if(dico.containsKey(p)){
-			dico.get(p).add(this);
-		}
-		else{
-			ArrayList<Images> nouv = new ArrayList<Images>();
-			nouv.add(this);
-			dico.put(p, nouv);
-		}
-	}
-
-	public void addVille(String v, Dico dico){
-		this.ville=v;
-		if(dico.containsKey(v)){
-			dico.get(v).add(this);
-		}
-		else{
-			ArrayList<Images> nouv = new ArrayList<Images>();
-			nouv.add(this);
-			dico.put(v, nouv);
-		}
-	}
-
-	public void addResolution(String r){
-		this.resolution=r;
-	}
-
-	public java.lang.Integer calculPixel(){
-		if(this.resolution!=null){
-			int index=0;
-			while(this.resolution.charAt(index)!='x'){
-				index = index+1;
-			}
-			int longueur=Integer.parseInt(this.resolution.substring(0, index));
-			int largeur=Integer.parseInt(this.resolution.substring(index+1, this.resolution.length()));
-			return longueur*largeur;
-			}
-		else{
-			return null;
-		}
-		}
 
 
 
