@@ -25,12 +25,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -49,6 +51,10 @@ import javafx.util.Callback;
 public class Controller {
 
 	@FXML
+	private RadioButton radiobuttonET;
+	@FXML
+	private RadioButton radiobuttonOU;
+	@FXML
 	private Button B1;
 	@FXML
 	private TextField brech; /* barre de recherche */
@@ -64,10 +70,6 @@ public class Controller {
 	private CheckBox cb1;
 	@FXML
 	private CheckBox cb2;
-	@FXML
-	private CheckBox cb3;
-	@FXML
-	private CheckBox cb4;
 	@FXML
 	private ChoiceBox<String> chb1; /* liste de choix des couleurs */
 	@FXML
@@ -140,6 +142,11 @@ public class Controller {
 												 * Selectionne par d�faut le
 												 * premier element de la liste
 												 */
+		final ToggleGroup group = new ToggleGroup();
+		radiobuttonOU.setToggleGroup(group);
+		radiobuttonOU.setSelected(true);
+		radiobuttonET.setToggleGroup(group);
+
 		GenereImages(this.modele.images);
 
 	}
@@ -164,12 +171,6 @@ public class Controller {
 		if (cb2.isSelected()) {
 			filtres.add(cb2.getText());
 		}
-		if (cb3.isSelected()) {
-			filtres.add(cb3.getText());
-		}
-		if (cb4.isSelected()) {
-			filtres.add(cb4.getText());
-		}
 		if (chb1.getValue() != "...") {
 			filtres.add(chb1.getValue());
 		}
@@ -192,52 +193,10 @@ public class Controller {
 		// }
 	}
 
-	public void barrerecherche(
-			ActionEvent event) { /*
-									 * Fonction qui permet de recuperer les
-									 * valeurs rentr�s dans la barre de
-									 * recherche
-									 */
-		// System.out.print(brech.getText());
-		ArrayList<String> filtres = new ArrayList<>();
-		// if(b1.onMouseClickedProperty() != null){
-		if (cb1.isSelected()) {
-			filtres.add(cb1.getText());
-		}
-		if (cb2.isSelected()) {
-			filtres.add(cb2.getText());
-		}
-		if (cb3.isSelected()) {
-			filtres.add(cb3.getText());
-		}
-		if (cb4.isSelected()) {
-			filtres.add(cb4.getText());
-		}
-		if (chb1.getValue() != "...") {
-			filtres.add(chb1.getValue());
-		}
-		if (chb2.getValue() != "...") {
-			filtres.add(chb2.getValue());
-		}
-		if (!GalerieTextPersonne.getText().isEmpty()) {
-			filtres.add(GalerieTextPersonne.getText());
-		}
-		if (!GalerieTextTag.getText().isEmpty()) {
-			filtres.add(GalerieTextTag.getText());
-		}
-		if (!brech.getText().isEmpty()) {
-			this.rech[0] = brech.getText();
-		}
-		this.rech[1] = filtres;
-
-			this.rech[0] = brech.getText();
-			resultrech();
-		
-	}
 
 	public void resultrech() {
-		System.out.println("Recherche : "+this.rech[0]);
-		System.out.println("Filtres : "+this.rech[1]);
+		System.out.println("Recherche : " + this.rech[0]);
+		System.out.println("Filtres : " + this.rech[1]);
 		try {
 			ArrayList<String> filtr = (ArrayList<String>) this.rech[1];
 			if (filtr.isEmpty() && brech.getText().isEmpty()) {
@@ -249,9 +208,16 @@ public class Controller {
 				}
 				TilePaneGalerie.getChildren().clear();
 				GenereImages(this.modele.images);
-			}
-			else {
-				ArrayList<Images> result = this.modele.dico.recherche_set(this.rech,0);
+			} else {
+				int log=0;
+				if(radiobuttonET.isSelected()){
+					log=1;
+				}
+				else{
+					log=0;
+				}
+
+				ArrayList<Images> result = this.modele.dico.recherche_set(this.rech, log);
 				for (int i = 0; i < result.size(); i++) {
 					ImageView imageView;
 					imageView = createImageView(result.get(i));
@@ -261,9 +227,12 @@ public class Controller {
 				GenereImages(result);
 			}
 
+			// File file = new File("C:/Users/Mofid/Krim/Desktop/L2/Java_Project/projetjava/Photos/louvre.jpg");
+
+			// System.out.println(System.getProperty("user.home"));
 
 		} catch (NullPointerException npe) {
-			
+
 		}
 
 	}
@@ -353,6 +322,7 @@ public class Controller {
 		ImageView imageView = new ImageView(img.recupimg());
 		imageView.setFitWidth(282);
 		imageView.setFitHeight(185);
+		imageView.getStyleClass().add("imageeffect");
 		return imageView;
 	}
 

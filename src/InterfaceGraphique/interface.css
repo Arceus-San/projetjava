@@ -27,9 +27,13 @@
 }
 
 #chb1{
-	-fx-background-radius: 50; -fx-background-color: #d5f4e6 
+	-fx-background-radius: 50; -fx-background-color: #d5f4e6
 }
 
 #chb2{
 	-fx-background-radius: 50; -fx-background-color: #d5f4e6
+}
+.imageeffect {
+	-fx-background-radius: 30; -fx-effect: dropshadow(three-pass-box, rgba(0.0,0.0,0.0,0.8), 20.0, 0.0, 0.0, 0.0);
+
 }

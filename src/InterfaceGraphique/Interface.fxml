@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
@@ -26,12 +27,10 @@
                           <items>
                             <AnchorPane fx:id="AnchorPaneFiltres" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                                  <children>
-                                    <ChoiceBox fx:id="chb1" layoutX="96.0" layoutY="282.0" prefHeight="31.0" prefWidth="115.0" AnchorPane.topAnchor="282.0" />
-                                    <Button fx:id="B2" layoutX="22.0" layoutY="545.0" mnemonicParsing="false" onAction="#NouvelleRecherche" prefHeight="37.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Nouvelle Recherche" />
-                                    <CheckBox fx:id="cb1" layoutX="62.0" layoutY="107.0" mnemonicParsing="false" text="4K" />
-                                    <CheckBox fx:id="cb2" layoutX="62.0" layoutY="140.0" mnemonicParsing="false" text="1920x1080" />
-                                    <CheckBox fx:id="cb3" layoutX="62.0" layoutY="172.0" mnemonicParsing="false" text="1280x720" />
-                                    <CheckBox fx:id="cb4" layoutX="62.0" layoutY="201.0" mnemonicParsing="false" text="Autres" />
+                                    <ChoiceBox fx:id="chb1" layoutX="96.0" layoutY="215.0" prefHeight="31.0" prefWidth="115.0" AnchorPane.topAnchor="215.0" />
+                                    <Button fx:id="B2" layoutX="23.0" layoutY="509.0" mnemonicParsing="false" onAction="#NouvelleRecherche" prefHeight="37.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Nouvelle Recherche" />
+                                    <CheckBox fx:id="cb1" layoutX="62.0" layoutY="109.0" mnemonicParsing="false" text="1920x1080" />
+                                    <CheckBox fx:id="cb2" layoutX="63.0" layoutY="148.0" mnemonicParsing="false" text="1280x720" />
                                     <Label fx:id="label1" layoutX="33.0" layoutY="71.0" text="Résolution">
                                        <font>
                                           <Font size="21.0" />
@@ -42,29 +41,29 @@
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox fx:id="chb2" layoutX="62.0" layoutY="347.0" prefHeight="26.0" prefWidth="142.0" />
-                                    <Label layoutX="11.0" layoutY="284.0" text="Couleur :">
+                                    <ChoiceBox fx:id="chb2" layoutX="61.0" layoutY="277.0" prefHeight="26.0" prefWidth="142.0" />
+                                    <Label layoutX="11.0" layoutY="217.0" text="Couleur :">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="12.0" layoutY="349.0" text="Ville :">
+                                    <Label layoutX="12.0" layoutY="277.0" text="Ville :">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="11.0" layoutY="408.0" text="Personne :">
+                                    <Label layoutX="11.0" layoutY="346.0" text="Personne :">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="GalerieTextPersonne" layoutX="98.0" layoutY="406.0" prefHeight="31.0" prefWidth="111.0" />
-                                    <Label layoutX="14.0" layoutY="466.0" text="Tag :">
+                                    <TextField fx:id="GalerieTextPersonne" layoutX="98.0" layoutY="346.0" prefHeight="31.0" prefWidth="111.0" />
+                                    <Label layoutX="14.0" layoutY="409.0" text="Tag :">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="GalerieTextTag" layoutX="61.0" layoutY="464.0" prefHeight="26.0" prefWidth="145.0" />
+                                    <TextField fx:id="GalerieTextTag" layoutX="60.0" layoutY="407.0" prefHeight="26.0" prefWidth="145.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane maxHeight="924.0" maxWidth="1693.0" minHeight="925.0" minWidth="1693.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
@@ -138,11 +137,13 @@
             </Tab>
          </tabs>
       </TabPane>
-      <TextField fx:id="brech" layoutX="233.0" layoutY="48.0" onAction="#barrerecherche" prefHeight="39.0" prefWidth="1623.0" />
-      <Button fx:id="B1" layoutX="47.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Ouvrir l'image">
+      <TextField fx:id="brech" layoutX="233.0" layoutY="48.0" onAction="#NouvelleRecherche" prefHeight="39.0" prefWidth="1623.0" />
+      <Button fx:id="B1" layoutX="47.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-radius: 50; -fx-background-color: #90ced6;" text="FicsFinder">
          <font>
             <Font name="System Italic" size="18.0" />
          </font>
       </Button>
+      <RadioButton fx:id="radiobuttonET" layoutX="254.0" layoutY="107.0" mnemonicParsing="false" text="ET" />
+      <RadioButton fx:id="radiobuttonOU" layoutX="315.0" layoutY="107.0" mnemonicParsing="false" text="OU" />
    </children>
 </Pane>
