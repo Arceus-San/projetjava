@@ -28,7 +28,7 @@
                             <AnchorPane fx:id="AnchorPaneFiltres" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                                  <children>
                                     <ChoiceBox fx:id="chb1" layoutX="96.0" layoutY="215.0" prefHeight="31.0" prefWidth="115.0" AnchorPane.topAnchor="215.0" />
-                                    <Button fx:id="B2" layoutX="23.0" layoutY="509.0" mnemonicParsing="false" onAction="#NouvelleRecherche" prefHeight="37.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Nouvelle Recherche" />
+                                    <Button fx:id="B2" layoutX="26.0" layoutY="388.0" mnemonicParsing="false" onAction="#NouvelleRecherche" prefHeight="37.0" prefWidth="173.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Nouvelle Recherche" />
                                     <CheckBox fx:id="cb1" layoutX="62.0" layoutY="109.0" mnemonicParsing="false" text="1920x1080" />
                                     <CheckBox fx:id="cb2" layoutX="63.0" layoutY="148.0" mnemonicParsing="false" text="1280x720" />
                                     <Label fx:id="label1" layoutX="33.0" layoutY="71.0" text="Résolution">
@@ -52,18 +52,6 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="11.0" layoutY="346.0" text="Personne :">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="GalerieTextPersonne" layoutX="98.0" layoutY="346.0" prefHeight="31.0" prefWidth="111.0" />
-                                    <Label layoutX="14.0" layoutY="409.0" text="Tag :">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="GalerieTextTag" layoutX="60.0" layoutY="407.0" prefHeight="26.0" prefWidth="145.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane maxHeight="924.0" maxWidth="1693.0" minHeight="925.0" minWidth="1693.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
@@ -125,8 +113,7 @@
                                     <TextField fx:id="ImageRes" editable="false" layoutX="180.0" layoutY="355.0" />
                                     <TextField fx:id="ImagePers" layoutX="177.0" layoutY="455.0" prefHeight="33.0" prefWidth="193.0" />
                                     <TextField fx:id="ImageVille" layoutX="131.0" layoutY="544.0" prefHeight="51.0" prefWidth="233.0" />
-                                    <TextField fx:id="ImageTag" layoutX="131.0" layoutY="652.0" prefHeight="101.0" prefWidth="227.0" />
-                                    <Button fx:id="B3" layoutX="99.0" layoutY="771.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="194.0" style="-fx-background-radius: 50; -fx-background-color: #80ced6;" text="Sauvegarder" />
+                                    <TextField fx:id="ImageTag" layoutX="131.0" layoutY="647.0" prefHeight="51.0" prefWidth="220.0" />
                                  </children>
                               </AnchorPane>
                             <AnchorPane fx:id="AnchorPaneImageGrande" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false" />

@@ -77,10 +77,6 @@ public class Controller {
 	@FXML
 	private ChoiceBox<String> chb2; /* liste de choix des villes */
 	@FXML
-	private TextField GalerieTextPersonne;
-	@FXML
-	private TextField GalerieTextTag;
-	@FXML
 	private Button B2;
 	@FXML
 	private ScrollPane ScrollPaneGalerie;
@@ -104,8 +100,6 @@ public class Controller {
 	private TextField ImageVille;
 	@FXML
 	private TextField ImageTag;
-	@FXML
-	private Button B3;
 	@FXML
 	private AnchorPane AnchorPaneImageGrande;
 	@FXML
@@ -180,12 +174,6 @@ public class Controller {
 		}
 		if (chb2.getValue() != "...") {
 			filtres.add(chb2.getValue());
-		}
-		if (!GalerieTextPersonne.getText().isEmpty()) {
-			filtres.add(GalerieTextPersonne.getText());
-		}
-		if (!GalerieTextTag.getText().isEmpty()) {
-			filtres.add(GalerieTextTag.getText());
 		}
 		if (!brech.getText().isEmpty()) {
 			this.rech[0] = brech.getText();
@@ -291,9 +279,13 @@ public class Controller {
 							String mouseEvt = event.getPickResult().getIntersectedNode().getId();
 							RecupEvt = mouseEvt;
 							ImageView cadre = new ImageView();
+
 							final Images img = Liste.get(Integer.parseInt(mouseEvt));
+
 							image_act=img;
+
 							Image IMAGE = img.recupimg();
+
 							BorderPane borderPane = new BorderPane();
 							cadre.setImage(IMAGE);
 							cadre.setFitHeight(AnchorPaneImageGrande.getHeight());
@@ -311,6 +303,7 @@ public class Controller {
 							}
 							catch(NullPointerException e) {
 								ImageTag.textProperty().setValue("Pas de tags");
+
 							}
 							ImageVille.textProperty().setValue(img.ville);
 							ImageRes.textProperty().setValue(img.resolution);
@@ -336,8 +329,8 @@ public class Controller {
 				}
 			});
 
-			
-			
+
+
 			ImageVille.setOnKeyPressed(new EventHandler<KeyEvent>() {
 				@Override
 				public void handle(KeyEvent keyEvent) {
@@ -451,7 +444,7 @@ public class Controller {
 
 		}
 	}
-	
+
 	private void modifPers(String t) {
 		System.out.println("Modification des personnes");
 		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
@@ -499,7 +492,7 @@ public class Controller {
 				else{ //Si la clé n'existe pas
 					ArrayList<Images> nouv = new ArrayList<Images>();
 					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
-					this.modele.dico.put(new_pers2.get(j), nouv); //Et on la met dans le dico à la clé correspondant a la personne 
+					this.modele.dico.put(new_pers2.get(j), nouv); //Et on la met dans le dico à la clé correspondant a la personne
 				}
 			}
 			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
@@ -507,13 +500,13 @@ public class Controller {
 
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	public void addVille(String ville) {
 		if (this.image_act.couleur.toString().isEmpty()) {
 			if (this.modele.dico.containsKey(ville)) {
