@@ -367,7 +367,7 @@ public class Controller {
 				@Override
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
-						//addPersonne(ImagePers.getText());
+						modifPers(ImagePers.getText());
 					}
 				}
 			});
@@ -398,23 +398,26 @@ public class Controller {
 
 	private void modifTags(String t) {
 		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
-		String[] ancien_tag = this.image_act.tags; //Liste des anciens tags
 		int index_img = this.modele.images.indexOf(this.image_act); //On récupère l'indice de l'image actuelle pour pour pouvoir la supprimer et ajouter sa nouvelle version avec ses nouveaux tags à la fin de la fonction
-		if(!(ancien_tag.length==0)) { //Si il y avait déjà des tags
-			for(int i=0;i<ancien_tag.length;i++) { //On parcourt les anciens tags
-				int indice = this.modele.dico.get(ancien_tag[i]).indexOf(this.image_act); // et on supprime l'image dans la liste correspondant à ce tag
-				this.modele.dico.get(ancien_tag[i]).remove(indice);
+		ArrayList<String> ancien_tags = this.image_act.tags; //Liste des anciens tags
+		if(!ancien_tags.isEmpty()){ //Si il y avait déjà des tags
+			for(int i=0;i<ancien_tags.size();i++) { //On parcours les anciens tags
+				int indice = this.modele.dico.get(ancien_tags.get(i)).indexOf(this.image_act); // et on supprime l'image dans la liste correspondant à ce tag
+				this.modele.dico.get(ancien_tags.get(i)).remove(indice);
 			}
 			String[] new_tags = t.split("\\s+"); //On récupère les tags rentrés par l'utilisateur
-			this.image_act.tags=new_tags; //On défini les nouveaux tags de l'image
-			for(int j=0;j<new_tags.length;j++) { //On parcours les tags
-				if(clés.contains(new_tags[j])) { //Si la clé existe déjà
-					this.modele.dico.get(new_tags[j]).add(this.modele.dico.get(new_tags[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
+			ArrayList<String> new_tags2 = new ArrayList();
+			for(int k=0;k<new_tags.length;k++) {
+				new_tags2.add(k, new_tags[k]);
+			}
+			for(int j=0;j<new_tags2.size();j++) { //On parcours les tags
+				if(clés.contains(new_tags2.get(j))) { //Si la clé existe déjà
+					this.modele.dico.get(new_tags2.get(j)).add(this.modele.dico.get(new_tags2.get(j)).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
 				}
 				else{ //Si la clé n'existe pas
 					ArrayList<Images> nouv = new ArrayList<Images>();
 					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
-					this.modele.dico.put(new_tags[j], nouv); //Et on la met dans le dico à la clé correspondant au tag
+					this.modele.dico.put(new_tags2.get(j), nouv); //Et on la met dans le dico à la clé correspondant au tag
 				}
 			}
 			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
@@ -422,15 +425,19 @@ public class Controller {
 		}
 		else{ //Si il n'y avait pas d'anciens tags
 			String[] new_tags = t.split("\\s+"); //On récupère les tags rentrés par l'utilisateur
-			this.image_act.tags=new_tags; //On défini les nouveaux tags de l'image
-			for(int j=0;j<new_tags.length;j++) { //On parcours les tags
-				if(clés.contains(new_tags[j])) { //Si la clé existe déjà
-					this.modele.dico.get(new_tags[j]).add(this.modele.dico.get(new_tags[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
+			ArrayList<String> new_tags2 = new ArrayList();
+			for(int k=0;k<new_tags.length;k++) {
+				new_tags2.add(k, new_tags[k]);
+			}
+			this.image_act.tags=new_tags2; //On défini les nouveaux tags de l'image
+			for(int j=0;j<new_tags2.size();j++) { //On parcours les tags
+				if(clés.contains(new_tags2.get(j))) { //Si la clé existe déjà
+					this.modele.dico.get(new_tags2.get(j)).add(this.modele.dico.get(new_tags2.get(j)).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
 				}
 				else{ //Si la clé n'existe pas
 					ArrayList<Images> nouv = new ArrayList<Images>();
 					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
-					this.modele.dico.put(new_tags[j], nouv); //Et on la met dans le dico à la clé correspondant au tag
+					this.modele.dico.put(new_tags2.get(j), nouv); //Et on la met dans le dico à la clé correspondant au tag
 				}
 			}
 			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
@@ -440,40 +447,53 @@ public class Controller {
 	}
 	
 	private void modifPers(String t) {
+		System.out.println("Modification des personnes");
 		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
-		String[] ancien_pers = this.image_act.personnes; //Liste des anciennes personnes
 		int index_img = this.modele.images.indexOf(this.image_act); //On récupère l'indice de l'image actuelle pour pour pouvoir la supprimer et ajouter sa nouvelle version avec ses nouveaux tags à la fin de la fonction
-		if(!(ancien_pers.length==0)) { //Si il y avait déjà des personnes
-			for(int i=0;i<ancien_pers.length;i++) { //On parcourt les anciennes personnes
-				int indice = this.modele.dico.get(ancien_pers[i]).indexOf(this.image_act); // et on supprime l'image dans la liste correspondant à cette personne
-				this.modele.dico.get(ancien_pers[i]).remove(indice);
+		System.out.println(this.image_act.personnes.size());
+		ArrayList<String> ancien_pers = this.image_act.personnes; //Liste des anciennes personnes
+		if(!ancien_pers.isEmpty()){ //Si il y avait déjà des personnes
+			System.out.println("Il y avait déjà des personnes");
+			for(int i=0;i<ancien_pers.size();i++) { //On parcourt les anciennes personnes
+				int indice = this.modele.dico.get(ancien_pers.get(i)).indexOf(this.image_act); // et on supprime l'image dans la liste correspondant à cette personne
+				this.modele.dico.get(ancien_pers.get(i)).remove(indice);
 			}
 			String[] new_pers = t.split("\\s+"); //On récupère les personnes rentrés par l'utilisateur
-			this.image_act.tags=new_pers; //On défini les nouvelles personnes de l'image
-			for(int j=0;j<new_pers.length;j++) { //On parcours les personnes
-				if(clés.contains(new_pers[j])) { //Si la clé existe déjà
-					this.modele.dico.get(new_pers[j]).add(this.modele.dico.get(new_pers[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
+			ArrayList<String> new_pers2 = new ArrayList();
+			for(int k=0;k<new_pers.length;k++) {
+				new_pers2.add(k, new_pers[k]);
+			}
+			for(int j=0;j<new_pers2.size();j++) { //On parcours les personnes
+				if(clés.contains(new_pers2.get(j))) { //Si la clé existe déjà
+					this.modele.dico.get(new_pers2.get(j)).add(this.modele.dico.get(new_pers2.get(j)).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
 				}
 				else{ //Si la clé n'existe pas
 					ArrayList<Images> nouv = new ArrayList<Images>();
 					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
-					this.modele.dico.put(new_pers[j], nouv); //Et on la met dans le dico à la clé correspondant a la personne
+					this.modele.dico.put(new_pers2.get(j), nouv); //Et on la met dans le dico à la clé correspondant a la personne
 				}
 			}
 			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
 			this.modele.images.add(this.modele.images.size(), this.image_act); //Et on y ajoute sa nouvelle version
 		}
 		else{ //Si il n'y avait pas d'anciennes personnes
+			System.out.println("Il n'y avait pas de personnes");
 			String[] new_pers = t.split("\\s+"); //On récupère les personnes rentrées par l'utilisateur
-			this.image_act.tags=new_pers; //On défini les nouvelles personnes de l'image
-			for(int j=0;j<new_pers.length;j++) { //On parcours les personnes
-				if(clés.contains(new_pers[j])) { //Si la clé existe déjà
-					this.modele.dico.get(new_pers[j]).add(this.modele.dico.get(new_pers[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant a la personne
+			ArrayList<String> new_pers2 = new ArrayList();
+			for(int k=0;k<new_pers.length;k++) {
+				new_pers2.add(k, new_pers[k]);
+			}
+			System.out.println(new_pers2);
+			this.image_act.tags=new_pers2; //On défini les nouvelles personnes de l'image
+			for(int j=0;j<new_pers2.size();j++) { //On parcours les personnes
+				System.out.println("La clé "+new_pers2.get(j)+" est présente dans le dico ? "+clés.contains(new_pers2.get(j)));
+				if(clés.contains(new_pers2.get(j))) { //Si la clé existe déjà
+					this.modele.dico.get(new_pers2.get(j)).add(this.modele.dico.get(new_pers2.get(j)).size(), this.image_act); //On ajoute l'image dans la liste correxpondant a la personne
 				}
 				else{ //Si la clé n'existe pas
 					ArrayList<Images> nouv = new ArrayList<Images>();
 					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
-					this.modele.dico.put(new_pers[j], nouv); //Et on la met dans le dico à la clé correspondant a la personne 
+					this.modele.dico.put(new_pers2.get(j), nouv); //Et on la met dans le dico à la clé correspondant a la personne 
 				}
 			}
 			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images

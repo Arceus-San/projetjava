@@ -18,9 +18,9 @@ public class Images implements Serializable{
 	public String nomimg;
 	public Color couleur;
 	public String resolution;
-	public String[] personnes;
+	public ArrayList<String> personnes = new ArrayList<String>();
 	public String ville;
-	public String[] tags;
+	public ArrayList<String> tags = new ArrayList<String>();
 	public String path;
 
 	public Images(String p){
