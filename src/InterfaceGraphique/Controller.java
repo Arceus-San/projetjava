@@ -271,7 +271,7 @@ public class Controller {
 
 	// generation des images dans la galerie d'images
 
-	private void GenereImages(ArrayList<Images> Liste) {
+	public void GenereImages(ArrayList<Images> Liste) {
 
 		TilePaneGalerie.setPadding(new Insets(30, 20, 20, 20));
 		TilePaneGalerie.setHgap(50);
@@ -285,7 +285,6 @@ public class Controller {
 
 				public void handle(MouseEvent event) { // on affiche l'image
 														// dans l'onglet Image
-
 					if (event.getButton().equals(MouseButton.PRIMARY)) {
 						if (event.getClickCount() == 2) {
 							TabPane.getSelectionModel().selectNext();
@@ -293,6 +292,7 @@ public class Controller {
 							RecupEvt = mouseEvt;
 							ImageView cadre = new ImageView();
 							final Images img = Liste.get(Integer.parseInt(mouseEvt));
+							
 							Image IMAGE = img.recupimg();
 							BorderPane borderPane = new BorderPane();
 							cadre.setImage(IMAGE);
@@ -306,11 +306,28 @@ public class Controller {
 							AnchorPaneImageGrande.getChildren().add(cadre);
 
 							ImageNom.textProperty().setValue(img.nomimg);
-							ImageTag.textProperty().setValue(img.tags.toString());
+							try {
+								ImageTag.textProperty().setValue(img.tags.toString());
+							}
+							catch(NullPointerException e) {
+								ImageTag.textProperty().setValue("Pas de tags");
+							}
 							ImageVille.textProperty().setValue(img.ville);
 							ImageRes.textProperty().setValue(img.resolution);
-							ImagePers.textProperty().setValue(img.personnes.toString());
-							ImageCoul.textProperty().setValue(img.couleur.toString());
+							try {
+								ImagePers.textProperty().setValue(img.personnes.toString());
+							}
+							catch(NullPointerException e) {
+								ImagePers.textProperty().setValue("Pas de personnes");
+							}
+							//ImagePers.textProperty().setValue(img.personnes.toString());
+							try {
+								ImageCoul.textProperty().setValue(img.couleur.toString());
+							}
+							catch(NullPointerException e) {
+								ImageCoul.textProperty().setValue("Pas de couleur");
+							}
+							//ImageCoul.textProperty().setValue(img.couleur.toString());
 							SplitPaneImage.setDividerPositions(0.2f);
 
 						}
@@ -319,6 +336,8 @@ public class Controller {
 				}
 			});
 
+			
+			
 			ImageVille.setOnKeyPressed(new EventHandler<KeyEvent>() {
 				@Override
 				public void handle(KeyEvent keyEvent) {
@@ -332,6 +351,7 @@ public class Controller {
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
 						modifTags(ImageTag.getText());
+						System.out.println();
 					}
 				}
 			});
@@ -418,6 +438,56 @@ public class Controller {
 
 		}
 	}
+	
+	private void modifPers(String t) {
+		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
+		String[] ancien_pers = this.image_act.personnes; //Liste des anciennes personnes
+		int index_img = this.modele.images.indexOf(this.image_act); //On récupère l'indice de l'image actuelle pour pour pouvoir la supprimer et ajouter sa nouvelle version avec ses nouveaux tags à la fin de la fonction
+		if(!(ancien_pers.length==0)) { //Si il y avait déjà des personnes
+			for(int i=0;i<ancien_pers.length;i++) { //On parcourt les anciennes personnes
+				int indice = this.modele.dico.get(ancien_pers[i]).indexOf(this.image_act); // et on supprime l'image dans la liste correspondant à cette personne
+				this.modele.dico.get(ancien_pers[i]).remove(indice);
+			}
+			String[] new_pers = t.split("\\s+"); //On récupère les personnes rentrés par l'utilisateur
+			this.image_act.tags=new_pers; //On défini les nouvelles personnes de l'image
+			for(int j=0;j<new_pers.length;j++) { //On parcours les personnes
+				if(clés.contains(new_pers[j])) { //Si la clé existe déjà
+					this.modele.dico.get(new_pers[j]).add(this.modele.dico.get(new_pers[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
+				}
+				else{ //Si la clé n'existe pas
+					ArrayList<Images> nouv = new ArrayList<Images>();
+					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
+					this.modele.dico.put(new_pers[j], nouv); //Et on la met dans le dico à la clé correspondant a la personne
+				}
+			}
+			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
+			this.modele.images.add(this.modele.images.size(), this.image_act); //Et on y ajoute sa nouvelle version
+		}
+		else{ //Si il n'y avait pas d'anciennes personnes
+			String[] new_pers = t.split("\\s+"); //On récupère les personnes rentrées par l'utilisateur
+			this.image_act.tags=new_pers; //On défini les nouvelles personnes de l'image
+			for(int j=0;j<new_pers.length;j++) { //On parcours les personnes
+				if(clés.contains(new_pers[j])) { //Si la clé existe déjà
+					this.modele.dico.get(new_pers[j]).add(this.modele.dico.get(new_pers[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant a la personne
+				}
+				else{ //Si la clé n'existe pas
+					ArrayList<Images> nouv = new ArrayList<Images>();
+					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
+					this.modele.dico.put(new_pers[j], nouv); //Et on la met dans le dico à la clé correspondant a la personne 
+				}
+			}
+			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
+			this.modele.images.add(this.modele.images.size(), this.image_act); //Et on y ajoute sa nouvelle version
+
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 	public void addVille(String ville) {
 		if (this.image_act.couleur.toString().isEmpty()) {
 			if (this.modele.dico.containsKey(ville)) {
