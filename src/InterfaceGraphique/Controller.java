@@ -112,8 +112,9 @@ public class Controller {
 	public Modele modele;
 	@FXML
 	public String RecupEvt;
-	
+	@FXML
 	public Images image_act;
+
 
 	Object rech[] = { "", new ArrayList<String>() };
 
@@ -240,7 +241,39 @@ public class Controller {
 		}
 
 	}
-
+	
+	public void addCouleur(String coul){
+		if(this.image_act.couleur.toString().equals("")){
+			if(this.modele.dico.containsKey(coul)){
+				this.modele.dico.get(coul).add(this.modele.dico.get(coul).size(),this.image_act);
+			}
+			else{
+				ArrayList<Images> newarray = new ArrayList();
+				newarray.add(this.image_act);
+				this.modele.dico.put(coul,newarray);
+			}
+		}
+		else{
+			int i = this.modele.dico.get(this.image_act.couleur.toString()).indexOf(this.image_act);
+			this.modele.dico.get(this.image_act.couleur.toString()).remove(i);
+			if(this.modele.dico.containsKey(coul)){
+				this.modele.dico.get(coul).add(this.image_act);
+			}
+			else{
+				ArrayList<Images> newarray2 = new ArrayList();
+				newarray2.add(this.image_act);
+				this.modele.dico.put(coul,newarray2);
+			}
+		}
+		for(int i=0;i<this.modele.images.size();i++){
+			if(this.modele.images.get(i).toString()==this.image_act.toString()){
+				this.modele.images.remove(i);
+				this.image_act.couleur=Color.web(coul);
+				this.modele.images.add(image_act);
+			}
+		}
+	}
+	
 	// generation des images dans la galerie d'images
 
 	private void GenereImages(ArrayList<Images> Liste) {
@@ -284,27 +317,13 @@ public class Controller {
 							ImagePers.textProperty().setValue(img.personnes.toString());
 							ImageCoul.textProperty().setValue(img.couleur.toString());
 							SplitPaneImage.setDividerPositions(0.2f);
+
 						}
 					}
 
 				}
 			});
 
-			ImageTag.setOnKeyPressed(new EventHandler<KeyEvent>() {
-				@Override
-				public void handle(KeyEvent keyEvent) {
-					if (keyEvent.getCode() == KeyCode.ENTER) {
-						ArrayList<String> before = new ArrayList<>();
-						// before = Liste.get(Integer.parseInt(RecupEvt)).tags;
-						String text = ImageTag.getText().trim().replaceAll("\n", "").replaceAll("\r", "")
-								.replaceAll("\\s+", "");
-						// Liste.get(Integer.parseInt(RecupEvt)).Set_Tags(text);
-						ArrayList<String> after = new ArrayList<>();
-						// after = Liste.get(Integer.parseInt(RecupEvt)).tags;
-						DeleteTags(Integer.parseInt(RecupEvt), before, after, Liste);
-					}
-				}
-			});
 
 			VBox vbox = new VBox();
 
@@ -330,33 +349,6 @@ public class Controller {
 		return imageView;
 	}
 
-	private void DeleteTags(int id, ArrayList<String> A, ArrayList<String> B, ArrayList<Images> Img) {
-		for (int i = 1; i < A.size(); i++) {
-			ArrayList<String> C = (modele.Tags.get(A.get(i)));
-			if (!B.contains(A.get(i))) {
-				C.remove(Img.get(id).recupimg());
-			}
-		}
-
-		if (B.size() != A.size()) {
-			Dico Aset = new Dico();
-			Dico Bset = new Dico();
-			Bset.remove(Aset);
-
-			ArrayList<String> Dif = new ArrayList<String>();
-			Dif.add(Bset.toString());
-			for (int j = 0; j < Dif.size(); j++) {
-				if (modele.Tags.containsKey(Dif.get(j))) {
-					modele.Tags.get(Dif.get(j)).add(Img.get(id).recupimg().toString());
-				} else {
-					ArrayList<String> D = new ArrayList<String>();
-					D.add(Img.get(id).recupimg().toString());
-					modele.Tags.put(Dif.get(j), D);
-				}
-			}
-		}
-
-	}
 	
 	private void modifTags(String t) {
 		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
