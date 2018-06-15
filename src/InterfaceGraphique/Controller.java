@@ -116,6 +116,7 @@ public class Controller {
 	}
 
 	public void initialize() throws IOException {
+		B1.setText("PicsFinder");
 
 		ObservableList<String> couleurs = FXCollections.observableArrayList("...", "Noir", "Bleu", "Cyan", "Gris",
 				"Vert", "Magenta", "Orange", "Rose", "Rouge", "Blanc",

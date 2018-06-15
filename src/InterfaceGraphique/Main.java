@@ -43,7 +43,7 @@ public class Main extends Application{
 		stage.setScene(scene);
 		stage.show();
 
-		//stage.setOnHiding(event -> modele.enregistrement());
+		stage.setOnHiding(event -> modele.enregistrement());
 
 
 
