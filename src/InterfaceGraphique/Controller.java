@@ -115,7 +115,6 @@ public class Controller {
 	@FXML
 	public Images image_act;
 
-
 	Object rech[] = { "", new ArrayList<String>() };
 
 	public Controller(Modele modele) {
@@ -198,7 +197,6 @@ public class Controller {
 		// }
 	}
 
-
 	public void resultrech() {
 		System.out.println("Recherche : " + this.rech[0]);
 		System.out.println("Filtres : " + this.rech[1]);
@@ -214,12 +212,11 @@ public class Controller {
 				TilePaneGalerie.getChildren().clear();
 				GenereImages(this.modele.images);
 			} else {
-				int log=0;
-				if(radiobuttonET.isSelected()){
-					log=1;
-				}
-				else{
-					log=0;
+				int log = 0;
+				if (radiobuttonET.isSelected()) {
+					log = 1;
+				} else {
+					log = 0;
 				}
 
 				ArrayList<Images> result = this.modele.dico.recherche_set(this.rech, log);
@@ -232,7 +229,8 @@ public class Controller {
 				GenereImages(result);
 			}
 
-			// File file = new File("C:/Users/Mofid/Krim/Desktop/L2/Java_Project/projetjava/Photos/louvre.jpg");
+			// File file = new
+			// File("C:/Users/Mofid/Krim/Desktop/L2/Java_Project/projetjava/Photos/louvre.jpg");
 
 			// System.out.println(System.getProperty("user.home"));
 
@@ -241,39 +239,36 @@ public class Controller {
 		}
 
 	}
-	
-	public void addCouleur(String coul){
-		if(this.image_act.couleur.toString().equals("")){
-			if(this.modele.dico.containsKey(coul)){
-				this.modele.dico.get(coul).add(this.modele.dico.get(coul).size(),this.image_act);
-			}
-			else{
+
+	public void addCouleur(String coul) {
+		if (this.image_act.couleur.toString().equals("")) {
+			if (this.modele.dico.containsKey(coul)) {
+				this.modele.dico.get(coul).add(this.modele.dico.get(coul).size(), this.image_act);
+			} else {
 				ArrayList<Images> newarray = new ArrayList();
 				newarray.add(this.image_act);
-				this.modele.dico.put(coul,newarray);
+				this.modele.dico.put(coul, newarray);
 			}
-		}
-		else{
+		} else {
 			int i = this.modele.dico.get(this.image_act.couleur.toString()).indexOf(this.image_act);
 			this.modele.dico.get(this.image_act.couleur.toString()).remove(i);
-			if(this.modele.dico.containsKey(coul)){
+			if (this.modele.dico.containsKey(coul)) {
 				this.modele.dico.get(coul).add(this.image_act);
-			}
-			else{
+			} else {
 				ArrayList<Images> newarray2 = new ArrayList();
 				newarray2.add(this.image_act);
-				this.modele.dico.put(coul,newarray2);
+				this.modele.dico.put(coul, newarray2);
 			}
 		}
-		for(int i=0;i<this.modele.images.size();i++){
-			if(this.modele.images.get(i).toString()==this.image_act.toString()){
+		for (int i = 0; i < this.modele.images.size(); i++) {
+			if (this.modele.images.get(i).toString() == this.image_act.toString()) {
 				this.modele.images.remove(i);
-				this.image_act.couleur=Color.web(coul);
+				this.image_act.couleur = Color.web(coul);
 				this.modele.images.add(image_act);
 			}
 		}
 	}
-	
+
 	// generation des images dans la galerie d'images
 
 	private void GenereImages(ArrayList<Images> Liste) {
@@ -324,6 +319,38 @@ public class Controller {
 				}
 			});
 
+			ImageVille.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				@Override
+				public void handle(KeyEvent keyEvent) {
+					if (keyEvent.getCode() == KeyCode.ENTER) {
+						addVille(ImageVille.getText());
+					}
+				}
+			});
+			ImageTag.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				@Override
+				public void handle(KeyEvent keyEvent) {
+					if (keyEvent.getCode() == KeyCode.ENTER) {
+						modifTags(ImageTag.getText());
+					}
+				}
+			});
+			ImageCoul.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				@Override
+				public void handle(KeyEvent keyEvent) {
+					if (keyEvent.getCode() == KeyCode.ENTER) {
+						addCouleur(ImageCoul.getText());
+					}
+				}
+			});
+			ImagePers.setOnKeyPressed(new EventHandler<KeyEvent>() {
+				@Override
+				public void handle(KeyEvent keyEvent) {
+					if (keyEvent.getCode() == KeyCode.ENTER) {
+						//addPersonne(ImagePers.getText());
+					}
+				}
+			});
 
 			VBox vbox = new VBox();
 
@@ -349,7 +376,6 @@ public class Controller {
 		return imageView;
 	}
 
-	
 	private void modifTags(String t) {
 		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
 		String[] ancien_tag = this.image_act.tags; //Liste des anciens tags
@@ -389,7 +415,29 @@ public class Controller {
 			}
 			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
 			this.modele.images.add(this.modele.images.size(), this.image_act); //Et on y ajoute sa nouvelle version
-		
+
 		}
 	}
+	public void addVille(String ville) {
+		if (this.image_act.couleur.toString().isEmpty()) {
+			if (this.modele.dico.containsKey(ville)) {
+				this.modele.dico.get(ville).add(this.image_act);
+			} else {
+				ArrayList<Images> newarray3 = new ArrayList();
+				newarray3.add(this.image_act);
+				this.modele.dico.put(ville, newarray3);
+			}
+		} else {
+			int i = this.modele.dico.get(this.image_act.couleur.toString()).indexOf(this.image_act);
+			this.modele.dico.remove(this.image_act.couleur.toString(), this.modele.dico.get(this.image_act.couleur.toString()).remove(i));
+			if (this.modele.dico.containsKey(ville)) {
+				this.modele.dico.get(ville).add(this.image_act);
+			} else {
+				ArrayList<Images> newarray4 = new ArrayList();
+				newarray4.add(this.image_act);
+				this.modele.dico.put(ville, newarray4);
+			}
+		}
+	}
+
 }
