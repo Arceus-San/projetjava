@@ -292,7 +292,7 @@ public class Controller {
 							RecupEvt = mouseEvt;
 							ImageView cadre = new ImageView();
 							final Images img = Liste.get(Integer.parseInt(mouseEvt));
-							
+							image_act=img;
 							Image IMAGE = img.recupimg();
 							BorderPane borderPane = new BorderPane();
 							cadre.setImage(IMAGE);
@@ -343,6 +343,7 @@ public class Controller {
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
 						addVille(ImageVille.getText());
+						ImageVille.clear();
 					}
 				}
 			});
@@ -351,15 +352,17 @@ public class Controller {
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
 						modifTags(ImageTag.getText());
-						System.out.println();
+						ImageTag.backward();
+
 					}
 				}
 			});
 			ImageCoul.setOnKeyPressed(new EventHandler<KeyEvent>() {
 				@Override
 				public void handle(KeyEvent keyEvent) {
-					if (keyEvent.getCode() == KeyCode.ENTER) {
+					if(keyEvent.getCode() == KeyCode.ENTER) {
 						addCouleur(ImageCoul.getText());
+						ImageCoul.clear();
 					}
 				}
 			});
