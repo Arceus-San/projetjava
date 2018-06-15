@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.StandardSocketOptions;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
 import com.sun.javafx.geom.Rectangle;
 
@@ -110,6 +112,8 @@ public class Controller {
 	public Modele modele;
 	@FXML
 	public String RecupEvt;
+	
+	public Images image_act;
 
 	Object rech[] = { "", new ArrayList<String>() };
 
@@ -353,5 +357,47 @@ public class Controller {
 		}
 
 	}
-
+	
+	private void modifTags(String t) {
+		Set<String> clés = this.modele.dico.keySet(); //Set des clés du dico
+		String[] ancien_tag = this.image_act.tags; //Liste des anciens tags
+		int index_img = this.modele.images.indexOf(this.image_act); //On récupère l'indice de l'image actuelle pour pour pouvoir la supprimer et ajouter sa nouvelle version avec ses nouveaux tags à la fin de la fonction
+		if(!(ancien_tag.length==0)) { //Si il y avait déjà des tags
+			for(int i=0;i<ancien_tag.length;i++) { //On parcourt les anciens tags
+				int indice = this.modele.dico.get(ancien_tag[i]).indexOf(this.image_act); // et on supprime l'image dans la liste correspondant à ce tag
+				this.modele.dico.get(ancien_tag[i]).remove(indice);
+			}
+			String[] new_tags = t.split("\\s+"); //On récupère les tags rentrés par l'utilisateur
+			this.image_act.tags=new_tags; //On défini les nouveaux tags de l'image
+			for(int j=0;j<new_tags.length;j++) { //On parcours les tags
+				if(clés.contains(new_tags[j])) { //Si la clé existe déjà
+					this.modele.dico.get(new_tags[j]).add(this.modele.dico.get(new_tags[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
+				}
+				else{ //Si la clé n'existe pas
+					ArrayList<Images> nouv = new ArrayList<Images>();
+					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
+					this.modele.dico.put(new_tags[j], nouv); //Et on la met dans le dico à la clé correspondant au tag
+				}
+			}
+			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
+			this.modele.images.add(this.modele.images.size(), this.image_act); //Et on y ajoute sa nouvelle version
+		}
+		else{ //Si il n'y avait pas d'anciens tags
+			String[] new_tags = t.split("\\s+"); //On récupère les tags rentrés par l'utilisateur
+			this.image_act.tags=new_tags; //On défini les nouveaux tags de l'image
+			for(int j=0;j<new_tags.length;j++) { //On parcours les tags
+				if(clés.contains(new_tags[j])) { //Si la clé existe déjà
+					this.modele.dico.get(new_tags[j]).add(this.modele.dico.get(new_tags[j]).size(), this.image_act); //On ajoute l'image dans la liste correxpondant au tag
+				}
+				else{ //Si la clé n'existe pas
+					ArrayList<Images> nouv = new ArrayList<Images>();
+					nouv.add(0, this.image_act); //On créé une nouvelle liste avec l'image
+					this.modele.dico.put(new_tags[j], nouv); //Et on la met dans le dico à la clé correspondant au tag
+				}
+			}
+			this.modele.images.remove(index_img); //On supprime l'ancienne "version" de l'image dans la liste de toutes les images
+			this.modele.images.add(this.modele.images.size(), this.image_act); //Et on y ajoute sa nouvelle version
+		
+		}
+	}
 }

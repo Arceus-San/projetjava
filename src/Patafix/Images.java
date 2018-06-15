@@ -20,7 +20,7 @@ public class Images implements Serializable{
 	public String resolution;
 	public ArrayList<String> personnes = new ArrayList<String>();
 	public String ville;
-	public ArrayList<String> tags = new ArrayList<String>();
+	public String[] tags;
 	public String path;
 
 	public Images(String p){
