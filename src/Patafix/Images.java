@@ -16,7 +16,7 @@ public class Images implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	public String nomimg;
-	public Color couleur;
+	public String couleur;
 	public String resolution;
 	public ArrayList<String> personnes = new ArrayList<String>();
 	public String ville;
@@ -45,8 +45,19 @@ public class Images implements Serializable{
 		sb.append((int)this.recupimg().getHeight());
 		this.resolution=sb.toString();
 	}
-
-
+	
+	public void addc(String coul){
+		this.couleur=coul;
+	}
+	public void addv(String vil){
+		this.ville=vil;
+	}
+	public void addp(String pers){
+		this.personnes.add(pers);
+	}
+	public void addt(String tag){
+		this.tags.add(tag);
+	}
 
 
 }

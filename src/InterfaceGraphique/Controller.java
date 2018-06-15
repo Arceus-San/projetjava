@@ -263,7 +263,7 @@ public class Controller {
 		for (int i = 0; i < this.modele.images.size(); i++) {
 			if (this.modele.images.get(i).toString() == this.image_act.toString()) {
 				this.modele.images.remove(i);
-				this.image_act.couleur = Color.web(coul);
+				this.image_act.couleur = coul;
 				this.modele.images.add(image_act);
 			}
 		}
@@ -342,8 +342,9 @@ public class Controller {
 				@Override
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
-						addVille(ImageVille.getText());
-						ImageVille.clear();
+						image_act.addv(ImageVille.getText());
+						//addVille(ImageVille.getText());
+						//ImageVille.clear();
 					}
 				}
 			});
@@ -351,8 +352,9 @@ public class Controller {
 				@Override
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
-						modifTags(ImageTag.getText());
-						ImageTag.backward();
+						image_act.addt(ImageTag.getText());
+						//modifTags(ImageTag.getText());
+						//ImageTag.backward();
 
 					}
 				}
@@ -361,8 +363,8 @@ public class Controller {
 				@Override
 				public void handle(KeyEvent keyEvent) {
 					if(keyEvent.getCode() == KeyCode.ENTER) {
-						addCouleur(ImageCoul.getText());
-						ImageCoul.clear();
+						image_act.addc(ImageCoul.getText());
+						//ImageCoul.clear();
 					}
 				}
 			});
@@ -370,7 +372,8 @@ public class Controller {
 				@Override
 				public void handle(KeyEvent keyEvent) {
 					if (keyEvent.getCode() == KeyCode.ENTER) {
-						modifPers(ImagePers.getText());
+						image_act.addp(ImagePers.getText());
+						//modifPers(ImagePers.getText());
 					}
 				}
 			});
